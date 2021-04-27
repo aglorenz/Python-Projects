@@ -1,7 +1,7 @@
 
 import sqlite3
 
-conn = sqlite3.connect('test.db')
+conn = sqlite3.connect('test.db')  # create db if it doesn't exist
 
 with conn:
     cur = conn.cursor()
