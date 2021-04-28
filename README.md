@@ -1,5 +1,8 @@
-# Python Projects
-Projects from the Python course at The Tech Academy 
+# Python Projects 
+Projects from the Python course at The Tech Academy.
+```
+All projects written in Python 3.9.4
+```
 
 ## Nice or Mean Game
 Description
