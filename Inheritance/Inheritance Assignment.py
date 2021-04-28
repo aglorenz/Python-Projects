@@ -44,7 +44,7 @@ class Customer(User):
 
 if __name__ == "__main__":
         
-    #Outside of the class you create an instace of the User class
+    #Outside of the class you create an instance of the User class
     new_user = User("Andy", "andy@gmail.com", "p@ssw0rd", 1234)
 
     #Call the login method using the new object

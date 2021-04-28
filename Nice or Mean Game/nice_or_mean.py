@@ -3,9 +3,9 @@
 #
 # Author:   Andy Lorenz
 #
-# Purpose:  The Tech Academy - Python Course, Creatin our first program together.
+# Purpose:  The Tech Academy - Python Course, Creating our first program together.
 #           Demonstrating how to pass variables from function to function
-#           while producting a functional game.
+#           while producing a functional game.
 #
 #           Remember, function_name(variable) _means that we pass in the variable.
 #           return variable _means that we are returning the variable back
@@ -14,6 +14,7 @@
 
 from playsound import playsound
 
+# initialize the game vars at game start
 def start(nice=0, mean=0, name=""):
     # get user's name
     name = describe_game(name)
@@ -42,6 +43,7 @@ def describe_game(name):
                     stop = False
     return name                    
                              
+# This is the main loop in the game.  The loop checks for valid answer and adds 1 to either nice or mean
 def nice_mean(nice,mean,name):
     stop = True
     while stop:
@@ -57,12 +59,14 @@ def nice_mean(nice,mean,name):
             stop = False
     score(nice,mean,name)  # pass the 3 vars to the score() function    
 
+# Display the current score
 def show_score(nice,mean,name):
     print("\n{}, your current total: \n({}, Nice) and ({}, Mean)".format(name,nice,mean))
 
-
+# Determine if the player wins or loses.
+# If mean > 2, then call  the lose function, if win > 2, then call the win function.  Otherwise, call nice_mean() again.
 def score(nice,mean,name):
-    # score function is being passewd the values stored within the 3 vars
+    # score function is being passed the values stored within the 3 vars
     if nice > 2: # if conditions is valid, call win function passing in the variables so it can use them
         win(nice,mean,name)
     if mean > 2: # if condition is valid, call losew function passing in the variables so it can usew them
@@ -70,6 +74,7 @@ def score(nice,mean,name):
     else:       # else, call nice_mean function passing in the vvariables so iti can usew them
         nice_mean(nice,mean,name)
 
+# print message and sound when player wins.
 def win(nice,mean,name):
     #Substitue the {} wildcars with our var values
     print("\nNice job {}, you win! \nEveryone loves you and you've \nmade lots of friends along the way!".format(name))
@@ -77,6 +82,7 @@ def win(nice,mean,name):
     playsound('homer_snicker.wav')
     again(nice,mean,name)
 
+# print message and play sound when player loses
 def lose(nice,mean,name):
     #Substitue the {} wildcars with our var values
     print("\nAhhh too bad, game over! \n{}, you live in a dirty beat-up \nvan by the river, wretched and alone!".format(name))
@@ -84,7 +90,7 @@ def lose(nice,mean,name):
     # call again function and pass in our variables
     again(nice,mean,name)
     
-
+# ask the user if they want to play again.  If so, reset the game.
 def again(nice,mean,name):
     stop = True
     while stop:
@@ -99,6 +105,7 @@ def again(nice,mean,name):
         else:
             print("\nEnter ( Y ) for 'YES', ( N ) for 'NO':\n>>> ")
 
+# reset the game if user wants to play again
 def reset(nice,mean,name):
     nice = 0
     mean = 0

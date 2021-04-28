@@ -26,37 +26,6 @@ def printFileList(conn, tblName):
             #print(type(name)) # each row returned is a tuple
             print("File name: {}".format(name[1]))
             
-##    varPerson = cur.fetchall()
-##    for item in varPerson:
-##        msg = "FirstName: {}\nLast Name: {}\nEmail: {}".format(item[0], item[1], item[2])
-##    print(msg)
-        
-        
-#conn.close()  # not needed since we are using 'with conn:'
-##
-##conn = sqlite3.connect('test.db')
-##
-##with conn:
-##    cur = conn.cursor()
-##    cur.execute("INSERT INTO tbl_persons(col_fname, col_lname, col_email) \
-##            VALUES (?,?,?)", ('Sarah', 'Jones', 'sjones@gmail.com'))
-##    cur.execute("INSERT INTO tbl_persons(col_fname, col_lname, col_email) \
-##            VALUES (?,?,?)", ('Sally', 'May', 'sallymay@gmail.com'))
-##    cur.execute("INSERT INTO tbl_persons(col_fname, col_lname, col_email) \
-##        VALUES (?,?,?)", ('Kevin', 'Bacon', 'kbacon@rocketmail.com'))
-##
-##    conn.commit()
-##conn.close()   # not needed since we are using 'with conn:'
-##
-##conn = sqlite3.connect('test.db')
-##
-##with conn:
-##    cur = conn.cursor()
-##    cur.execute("SELECT col_fname, col_lname, col_email FROM tbl_persons WHERE col_fname = 'Sarah'")
-##    varPerson = cur.fetchall()
-##    for item in varPerson:
-##        msg = "FirstName: {}\nLast Name: {}\nEmail: {}".format(item[0], item[1], item[2])
-##    print(msg)
 
 def main():
     import sqlite3
