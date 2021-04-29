@@ -4,7 +4,7 @@ Projects from the Python course at The Tech Academy.
 All projects written in Python 3.9.4
 ```
 
-## Nice or Mean Game
+## [Nice or Mean Game](https://github.com/aglorenz/Python-Projects/tree/main/Nice%20or%20Mean%20Game)
 Description
 
 ## Database SQLite3
