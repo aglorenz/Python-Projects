@@ -21,6 +21,8 @@ printFileList(conn, tblName)
 Demonstrate Classes, Inheritance, and a parameterized class constructor
 
 ## [Polymorphism](https://github.com/aglorenz/Python-Projects/tree/main/Polymorphism)
-* Create two classes that inherit from a parent class
+* Create two classes (Automobile, Airplane) that inherit from a parent (Vehicle) class
 * Ensure the parent class has at least one method.
 * Each child class declares the method with the same name as the parent and overrides the parent method with a different implementation
+
+**Enhancement:** I learned how to use multi-line f strings for the method output.
