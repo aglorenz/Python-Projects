@@ -1,7 +1,8 @@
 #
 # Python Ver:   3.9.5
 #
-# Author:       Typed in by Andrew Lorenz from code by Daniel Christie
+# Author:       Daniel Christie
+#               Debugged and refactored by Andy Lorenz
 #
 # Purpose:      Phonebook Demo. Demonstrating OOP, Tkinter GUI module,
 #               using Tkinter Parent and Child relationships.

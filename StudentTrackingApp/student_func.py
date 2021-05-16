@@ -1,10 +1,9 @@
 #
 # Python Ver: 3.9.5
 #
-# Author:       Daniel Christie
-#               Debugged and refactored by Andy Lorenz
+# Author:       Andrew Lorenz
 #
-# Purpose:      Phonebook Demo. Demonstrating OOP, Tkinter GUI module,
+# Purpose:      Simple Student Tracking App. Demonstrating OOP, Tkinter GUI module,
 #               using Tkinter Parent and Child relationships.
 #
 # Tested OS:    This code was written and tested wo work with Windows 10.
@@ -18,8 +17,8 @@ import sqlite3
 
 # import our other modules
 # so we can have access to them
-import phonebook_main
-import phonebook_gui
+import student_main
+import student_gui
 
 
 def center_window(self, w, h): # pass in the tkinter frame (master) reference and the v and h
@@ -41,10 +40,10 @@ def ask_quit(self):
 
 #=========================================
 def create_db(self):
-    conn = sqlite3.connect('phonebook.db')
+    conn = sqlite3.connect('student.db')
     with conn:
         cur = conn.cursor()
-        cur.execute("CREATE TABLE if not exists tbl_phonebook( \
+        cur.execute("CREATE TABLE if not exists tbl_student( \
             ID INTEGER PRIMARY KEY AUTOINCREMENT, \
             col_fname TEXT, \
             col_lname TEXT, \
@@ -54,27 +53,10 @@ def create_db(self):
             );")
         # You must commit() to save changes & close the database connection
         conn.commit()
-    #conn.close()
-    #first_run(self)
-
-# This is no longer needed to prevent an error.  Fixed by Andy
-##def first_run(self):
-##    data = ('John','Doe','John Doe','111-111-1111','jdoe@email.com')
-##    conn = sqlite3.connect('phonebook.db')
-##    with conn:
-##        cur = conn.cursor()
-##        cur,count = count_records(cur)
-##        print("number of records = {}".format(count))
-##        if count < 1:
-##            cur.execute("""INSERT INTO tbl_phonebook (col_fname,col_lname,col_fullname, col_phone,col_email)\
-##                        VALUES (?,?,?,?,?)""", \
-##                        (data))
-##            conn.commit()
-##        #conn.close()
 
 def count_records(cur):
     count = ""
-    cur.execute("SELECT COUNT(*) FROM tbl_phonebook")
+    cur.execute("SELECT COUNT(*) FROM tbl_student")
     count = cur.fetchone()[0]
     return cur,count
 
@@ -84,11 +66,11 @@ def onSelect(self,event):
     varList = event.widget
     select = varList.curselection()[0]
     value = varList.get(select)
-    conn = sqlite3.connect('phonebook.db')
+    conn = sqlite3.connect('student.db')
     with conn:
         cursor = conn.cursor()
         cursor.execute("SELECT col_fname, col_lname, col_phone, col_email \
-                          FROM tbl_phonebook \
+                          FROM tbl_student \
                           WHERE col_fullname = (?)", [value])
         varBody = cursor.fetchall()
         # This returns a tuple and we can slice it into 4 parts using data[] during the iteration
@@ -117,18 +99,18 @@ def addToList(self):
     if not "@" or not "." in var_email: # will use this soon
         print("Incorrect email format!!!")
     if (len(var_fname) > 0) and (len(var_lname) > 0) and (len(var_phone) > 0) and (len(var_email) > 0): # ensure user provides both names
-        conn = sqlite3.connect('phonebook.db')
+        conn = sqlite3.connect('student.db')
         with conn:
             cursor = conn.cursor()
             # Check if fullname exists in the db, if so, we will alert user and disregard request
             cursor.execute("SELECT COUNT(*) \
-                            FROM tbl_phonebook \
+                            FROM tbl_student \
                             WHERE col_fullname = '{}'".format(var_fullname)) #, (var_fullname))
             count = cursor.fetchone()[0]
             chkName = count
             if chkName == 0: # if this is 0, then this user is not in the database and we can add it
                 print("chkName: {}".format(chkName))
-                cursor.execute("INSERT INTO tbl_phonebook (col_fname, col_lname, col_fullname, col_phone, col_email) \
+                cursor.execute("INSERT INTO tbl_student (col_fname, col_lname, col_fullname, col_phone, col_email) \
                                 VALUES (?,?,?,?,?)", (var_fname, var_lname, var_fullname, var_phone, var_email))
                 self.lstList1.insert(END, var_fullname) # update listbox with the new fullname
                 onClear(self) # call the function to clear all of the textboxes
@@ -148,22 +130,22 @@ def onDelete(self):
     except:
         messagebox.showinfo("Missing selection","No name was selected from the list box. \nCancelling the Delete request.")
         return
-    conn = sqlite3.connect('phonebook.db')
+    conn = sqlite3.connect('student.db')
     with conn:
         cur = conn.cursor()
         # check count to ensure that this is not the  last record in
         # the database.... cannot delete last record or we will get an error
-        cur.execute("SELECT COUNT(*) FROM tbl_phonebook")
+        cur.execute("SELECT COUNT(*) FROM tbl_student")
         count = cur.fetchone()[0]
         if count > 0:
             confirm = messagebox.askokcancel("Delete Confirmation", "All information associated with, ({})"
                                              "\n will be permanently deleted from the database."
                                              "\n\nProceed with the deletion request?".format(fullName))
             if confirm:
-                conn = sqlite3.connect('phonebook.db')
+                conn = sqlite3.connect('student.db')
                 with conn:
                     cursor = conn.cursor()
-                    cursor.execute("DELETE FROM tbl_phonebook WHERE COL_FULLNAME = '{}'".format(fullName))
+                    cursor.execute("DELETE FROM tbl_student WHERE COL_FULLNAME = '{}'".format(fullName))
                 onDeleted(self) # call the function to clear all of the textboxes and the selected index of listbox
                 #### onRefresh(self) # update the listbox of the changes
                 conn.commit()
@@ -196,27 +178,15 @@ def onClear(self):
 def onRefresh(self):
     # Populate the listbox with full names from the database
     self.lstList1.delete(0,END)
-    conn = sqlite3.connect('phonebook.db')
+    conn = sqlite3.connect('student.db')
     with conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT col_fullname FROM tbl_phonebook")   
+        cursor.execute("SELECT col_fullname FROM tbl_student")   
         #print(cursor.fetchall()[0])
         for fullName in cursor:    # loop through the query results and insert each full name into the list box
             self.lstList1.insert(0,str(fullName[0]))
 
-##  Below is the old less efficient version where the fullname query is run every time a new item is added to the list
-##  In the new version above, the query for list of names is only called once and the count is not needed.            
-##        cursor.execute("""SELECT COUNT(*) FROM tbl_phonebook""")
-##        count = cursor.fetchone()[0]
-##        i = 0
-##        while i < count:
-##                cursor.execute("""SELECT col_fullname FROM tbl_phonebook""")
-##                varList = cursor.fetchall()[i]
-##                for item in varList:
-##                    self.lstList1.insert(0,str(item))
-##                    i = i + 1
-##    conn.close()
-
+    
 def onUpdate(self):
     try:
         var_select = self.lstList1.curselection()[0] # index of the list selection
@@ -229,7 +199,7 @@ def onUpdate(self):
     var_phone = self.txt_phone.get().strip() # normalize the data to maintain database ingegrity
     var_email = self.txt_email.get().strip()
     if (len(var_phone) > 0) and (len(var_email) > 0): # ensure data is present
-        conn = sqlite3.connect('phonebook.db')
+        conn = sqlite3.connect('student.db')
         with conn:
             cur = conn.cursor()
             # countrecords to see if the user's changes are already in
@@ -237,10 +207,10 @@ def onUpdate(self):
             # Updated the query to check if the ph/email values for the selected name have changed
             #  (rather than if they exist anywhere in the db.
             #  Assumption (biz rule) is that multiple people can share the same email and phone number 
-            cur.execute("SELECT COUNT(*) FROM tbl_phonebook WHERE col_phone = '{}' and col_fullname = '{}'".format(var_phone,var_fullName))
+            cur.execute("SELECT COUNT(*) FROM tbl_student WHERE col_phone = '{}' and col_fullname = '{}'".format(var_phone,var_fullName))
             count = cur.fetchone()[0]
             print(count)
-            cur.execute("SELECT COUNT(*) FROM tbl_phonebook WHERE col_email = '{}' and col_fullname = '{}'".format(var_email,var_fullName))
+            cur.execute("SELECT COUNT(*) FROM tbl_student WHERE col_email = '{}' and col_fullname = '{}'".format(var_email,var_fullName))
             count2 = cur.fetchone()[0]
             print(count2)
             if count == 0 or count2 == 0: # if proposed changes are not already in the database, then proceed
@@ -248,10 +218,9 @@ def onUpdate(self):
                                                   "\n\nProceed with the update request?".format(var_phone,var_email,var_fullName))
                 print(response)
                 if response:
-                    #conn = sqlite3.connect('phonebook.db')
                     with conn:
                         cursor = conn.cursor()
-                        cursor.execute("UPDATE tbl_phonebook \
+                        cursor.execute("UPDATE tbl_student \
                                         SET col_phone = '{}', col_email = '{}' \
                                         WHERE col_fullname = '{}'".format(var_phone,var_email,var_fullName))
                         onClear(self)
