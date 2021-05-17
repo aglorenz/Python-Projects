@@ -40,23 +40,24 @@ def ask_quit(self):
 
 #=========================================
 def create_db(self):
-    conn = sqlite3.connect('student.db')
+    conn = sqlite3.connect('school.db')
     with conn:
         cur = conn.cursor()
-        cur.execute("CREATE TABLE if not exists tbl_student( \
-            ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-            col_fname TEXT, \
-            col_lname TEXT, \
-            col_fullname TEXT, \
-            col_phone TEXT, \
-            col_email TEXT \
+        # SQLite3 handles autoincrement for us of the ID (see insert statement in onAdd func
+        cur.execute("CREATE TABLE if not exists student( \
+            ID INTEGER PRIMARY KEY, \
+            fname TEXT, \
+            lname TEXT, \
+            phone TEXT, \
+            email TEXT, \
+            course TEXT \
             );")
         # You must commit() to save changes & close the database connection
         conn.commit()
 
 def count_records(cur):
     count = ""
-    cur.execute("SELECT COUNT(*) FROM tbl_student")
+    cur.execute("SELECT COUNT(*) FROM student")
     count = cur.fetchone()[0]
     return cur,count
 
@@ -66,11 +67,11 @@ def onSelect(self,event):
     varList = event.widget
     select = varList.curselection()[0]
     value = varList.get(select)
-    conn = sqlite3.connect('student.db')
+    conn = sqlite3.connect('school.db')
     with conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT col_fname, col_lname, col_phone, col_email \
-                          FROM tbl_student \
+        cursor.execute("SELECT fname, lname, phone, email, course \
+                          FROM student \
                           WHERE col_fullname = (?)", [value])
         varBody = cursor.fetchall()
         # This returns a tuple and we can slice it into 4 parts using data[] during the iteration
@@ -84,71 +85,66 @@ def onSelect(self,event):
             self.txt_email.delete(0,END)
             self.txt_email.insert(0,data[3])
 
-def addToList(self):
-    var_fname = self.txt_fname.get()
-    var_lname = self.txt_lname.get()
+def onAdd(self):
+    # Add the field entries to the Treelist and to the database
     # normalize the data to keep it consistent in the database
-    var_fname = var_fname.strip() # This will remove any blank spaces before and after the user's entry
-    var_lname = var_lname.strip() 
-    var_fname = var_fname.title() # This ensures the first char in each word is capitalized
-    var_lname = var_lname.title()
-    var_fullname = ("{} {}".format(var_fname,var_lname)) # combine our normalized names into a fulname
-    print("var_fullname: {}".format(var_fullname))
+    var_fname = self.txt_fname.get().strip().title() # get text, stip of whitespace and capitalize it
+    var_lname = self.txt_lname.get().strip().title()
     var_phone = self.txt_phone.get().strip()
     var_email = self.txt_email.get().strip()
+    var_course = self.txt_course.get().strip().title()
+
+    var_fullname = ("{} {}".format(var_fname,var_lname)) # combine our normalized names into a fulname
+    print("var_fullname: {}".format(var_fullname))
+
     if not "@" or not "." in var_email: # will use this soon
         print("Incorrect email format!!!")
-    if (len(var_fname) > 0) and (len(var_lname) > 0) and (len(var_phone) > 0) and (len(var_email) > 0): # ensure user provides both names
-        conn = sqlite3.connect('student.db')
+    if (len(var_fname) > 0) and (len(var_lname) > 0) and (len(var_phone) > 0) \
+       and (len(var_email) > 0) and (len(var_course) > 0):
+        conn = sqlite3.connect('school.db')
         with conn:
             cursor = conn.cursor()
-            # Check if fullname exists in the db, if so, we will alert user and disregard request
-            cursor.execute("SELECT COUNT(*) \
-                            FROM tbl_student \
-                            WHERE col_fullname = '{}'".format(var_fullname)) #, (var_fullname))
-            count = cursor.fetchone()[0]
-            chkName = count
-            if chkName == 0: # if this is 0, then this user is not in the database and we can add it
-                print("chkName: {}".format(chkName))
-                cursor.execute("INSERT INTO tbl_student (col_fname, col_lname, col_fullname, col_phone, col_email) \
-                                VALUES (?,?,?,?,?)", (var_fname, var_lname, var_fullname, var_phone, var_email))
-                self.lstList1.insert(END, var_fullname) # update listbox with the new fullname
-                onClear(self) # call the function to clear all of the textboxes
-            else:
-                messagebox.showerror("Name Error","'{}' already exists in the database! \nPlease choose a different name.".format(var_fullname))
-                onClear(self) # call the function to clear all of the textboxes
-        conn.commit()
-        conn.close()
+            cursor.execute("INSERT INTO student (fname, lname, phone, email, course)\
+                            VALUES (?,?,?,?,?)",
+                           (var_fname, var_lname, var_phone, var_email, var_course))
+            self.treeList.insert(parent='', index='end', text="",
+                                 values=(var_fname,var_lname, var_phone, var_email, var_course))
+            onClear(self) # call the function to clear all of the textboxes
     else:
-        messagebox.showerror("Missing Text Error","Please ensure that there is data in all four fields.")
+        messagebox.showerror("Missing Text Error","Please ensure that there is data in all fields.")
 
 def onDelete(self):
     try:
-##        var_select = self.lstList1.curselection()[0] # index of the list selection
-##        var_fullName = self.lstList1.get(var_select) # list selection's text value
-        fullName = self.lstList1.get(self.lstList1.curselection()) # Listbox's selected value
+        currItem = self.treeList.selection()
+        for item in currItem:  # move this to the delete secion and loop on it deleting each row from db and removing row from list
+            print(self.treeList.item(item))
+        studentID = (self.treeList.item(currItem)["values"]) # first column (hidden) in the tree list holds the student primary key
+        print(studentID[0])
+        return
+##        fullName = self.treeList.get(self.treeList.curselection()) # Treelist's selected value.  Error if nothing is selected
     except:
         messagebox.showinfo("Missing selection","No name was selected from the list box. \nCancelling the Delete request.")
         return
-    conn = sqlite3.connect('student.db')
+    conn = sqlite3.connect('.db')
     with conn:
         cur = conn.cursor()
         # check count to ensure that this is not the  last record in
         # the database.... cannot delete last record or we will get an error
-        cur.execute("SELECT COUNT(*) FROM tbl_student")
+        cur.execute("SELECT COUNT(*) FROM student")
         count = cur.fetchone()[0]
         if count > 0:
             confirm = messagebox.askokcancel("Delete Confirmation", "All information associated with, ({})"
                                              "\n will be permanently deleted from the database."
                                              "\n\nProceed with the deletion request?".format(fullName))
             if confirm:
-                conn = sqlite3.connect('student.db')
+                conn = sqlite3.connect('school.db')
                 with conn:
                     cursor = conn.cursor()
-                    cursor.execute("DELETE FROM tbl_student WHERE COL_FULLNAME = '{}'".format(fullName))
-                onDeleted(self) # call the function to clear all of the textboxes and the selected index of listbox
+                    cursor.execute("DELETE FROM student WHERE ID = '{}'".format(studentID))
+                
+                #onDeleted(self) # call the function to clear all of the textboxes and the selected index of listbox
                 #### onRefresh(self) # update the listbox of the changes
-                conn.commit()
+                #conn.commit()
         else:
             confirm = messagebox.showerror("Last Record Error", "({}) is the last record in the databsase and " 
                                             "cannot be deleted at this time. \n\nPlease add another record " 
@@ -174,17 +170,20 @@ def onClear(self):
     self.txt_lname.delete(0,END)
     self.txt_phone.delete(0,END)
     self.txt_email.delete(0,END)
+    self.txt_course.delete(0,END)
 
 def onRefresh(self):
     # Populate the listbox with full names from the database
-    self.lstList1.delete(0,END)
-    conn = sqlite3.connect('student.db')
+    #self.treeList.delete(0,END)
+    conn = sqlite3.connect('school.db')
     with conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT col_fullname FROM tbl_student")   
-        #print(cursor.fetchall()[0])
-        for fullName in cursor:    # loop through the query results and insert each full name into the list box
-            self.lstList1.insert(0,str(fullName[0]))
+        cursor.execute("SELECT * FROM student")   
+        rows = cursor.fetchall()
+        for row in rows:    # loop through the query results and insert each full name into the list box
+            #print(row)
+            self.treeList.insert(parent='', index='end', text=row[0],
+                                 values=(row[1],row[2],row[3],row[4],row[5]))  # row[0] is the ID, text=row[0] is primary key and is hidden
 
     
 def onUpdate(self):
@@ -199,7 +198,7 @@ def onUpdate(self):
     var_phone = self.txt_phone.get().strip() # normalize the data to maintain database ingegrity
     var_email = self.txt_email.get().strip()
     if (len(var_phone) > 0) and (len(var_email) > 0): # ensure data is present
-        conn = sqlite3.connect('student.db')
+        conn = sqlite3.connect('school.db')
         with conn:
             cur = conn.cursor()
             # countrecords to see if the user's changes are already in
@@ -207,10 +206,10 @@ def onUpdate(self):
             # Updated the query to check if the ph/email values for the selected name have changed
             #  (rather than if they exist anywhere in the db.
             #  Assumption (biz rule) is that multiple people can share the same email and phone number 
-            cur.execute("SELECT COUNT(*) FROM tbl_student WHERE col_phone = '{}' and col_fullname = '{}'".format(var_phone,var_fullName))
+            cur.execute("SELECT COUNT(*) FROM student WHERE phone = '{}' and col_fullname = '{}'".format(var_phone,var_fullName))
             count = cur.fetchone()[0]
             print(count)
-            cur.execute("SELECT COUNT(*) FROM tbl_student WHERE col_email = '{}' and col_fullname = '{}'".format(var_email,var_fullName))
+            cur.execute("SELECT COUNT(*) FROM student WHERE email = '{}' and col_fullname = '{}'".format(var_email,var_fullName))
             count2 = cur.fetchone()[0]
             print(count2)
             if count == 0 or count2 == 0: # if proposed changes are not already in the database, then proceed
@@ -220,8 +219,8 @@ def onUpdate(self):
                 if response:
                     with conn:
                         cursor = conn.cursor()
-                        cursor.execute("UPDATE tbl_student \
-                                        SET col_phone = '{}', col_email = '{}' \
+                        cursor.execute("UPDATE student \
+                                        SET phone = '{}', email = '{}' \
                                         WHERE col_fullname = '{}'".format(var_phone,var_email,var_fullName))
                         onClear(self)
                         conn.commit()

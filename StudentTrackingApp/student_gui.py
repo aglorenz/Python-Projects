@@ -98,7 +98,7 @@ def load_gui(self):
     self.treeList = ttk.Treeview(self.master)
     # Define columns for Treeview
     self.treeList['columns'] = ("fname","lname","phone","email","course")
-    self.treeList.column("#0", width=0, stretch=NO)
+    self.treeList.column("#0", width=0, stretch=NO) # not displayed, but will hold primary key from db
     self.treeList.column("fname", anchor=W, width=120)
     self.treeList.column("lname", anchor=W, width=120)
     self.treeList.column("phone", anchor=W, width=120)
@@ -112,8 +112,9 @@ def load_gui(self):
     self.treeList.heading("email", text = "Email", anchor=W)
     self.treeList.heading("course", text = "Course", anchor=W)
 
-    # Add Data
-    self.treeList.insert(parent='', index='end', iid=0, text="", values=("Andy", "Lorenz","555-555-5555","andy@gmail.com","Python"))
+    # Manual test of Adding Data
+    #self.treeList.insert(parent='', index='end', iid=0, text="", values=("Andy", "Lorenz","555-555-5555","andy@gmail.com","Python"))
+
     # Label for the Treeview
     self.lbl_info = tk.Label(self.master,text='Students:')
     self.lbl_info.grid(row=0,column=1,padx=(12,0),pady=(10,0),sticky=N+W)
@@ -121,15 +122,15 @@ def load_gui(self):
     self.treeList.grid(row=1, column=1, padx=(15,0), rowspan=9, columnspan=2, sticky=N+S+E+W)
                          
     # Buttons
-    self.btn_add = tk.Button(self.master,width=12,height=2,text='Add',command=lambda: student_func.addToList(self))
+    self.btn_add = tk.Button(self.master,width=12,height=2,text='Add',command=lambda: student_func.onAdd(self))
     self.btn_add.grid(row=10,column=0,padx=(27,0),pady=(45,10),sticky=W+E)
     self.btn_delete = tk.Button(self.master,width=12,height=2,text='Delete',command=lambda: student_func.onDelete(self))
     self.btn_delete.grid(row=10,column=1,padx=(15,0),pady=(45,10),sticky=W+E)
     self.btn_close = tk.Button(self.master,width=12,height=2,text='Close',command=lambda: student_func.ask_quit(self))
     self.btn_close.grid(row=10,column=2,columnspan=1,padx=(15,0),pady=(45,10),sticky=W+E)
 
-    #student_func.create_db(self)
-    #student_func.onRefresh(self)
+    student_func.create_db(self)
+    student_func.onRefresh(self)
 
 
 if __name__ == "__main__":
