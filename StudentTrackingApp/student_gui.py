@@ -94,18 +94,33 @@ def load_gui(self):
 ##    self.scrollbar1.grid(row=1,column=5,rowspan=9,columnspan=1,padx=(0,0),pady=(0,0),sticky=N+E+S)
 ##    self.lstList1.grid(row=1,column=2,rowspan=9,columnspan=3,padx=(0,0),pady=(0,0),sticky=N+E+S+W)
 
+    ######################################################
     # Define the Treeview with 2 scrollbars and grid them
-    self.treeList = ttk.Treeview(self.master)
-    # Define columns for Treeview
-    self.treeList['columns'] = ("fname","lname","phone","email","course")
-    self.treeList.column("#0", width=0, stretch=NO) # not displayed, but will hold primary key from db
+    ######################################################
+
+##    self.treeList = ttk.Treeview(self.master)
+##    self.treeList['columns'] = columns
+##    self.treeList['show'] = 'headings'  
+
+    # These are the columns we want to display. Column #0, the primary key, "ID" will be hidden 
+    # Define identifiers for columns in Treeview widget
+    columns = ("fname","lname","phone","email","course")
+    # here's a way to combine the above three commented out statements into one
+    self.treeList = ttk.Treeview(self.master,columns=columns, show='headings')
+
+    self.treeList.bind('<<TreeviewSelect>>',lambda event: student_func.onSelect(self,event))
+
+
+##    self.treeList.column("#0", anchor=W, width=40) 
+##    self.treeList.column("#0", width=0, stretch=NO) # not displayed, but will hold primary key (first column) from db
     self.treeList.column("fname", anchor=W, width=120)
     self.treeList.column("lname", anchor=W, width=120)
     self.treeList.column("phone", anchor=W, width=120)
     self.treeList.column("email", anchor=W, width=120)
     self.treeList.column("course", anchor=W, width=120)
+
     # Define display column headings
-    self.treeList.heading("#0", text = "", anchor=W)
+##    self.treeList.heading("#0", text = "ID", anchor=W)
     self.treeList.heading("fname", text = "First Name", anchor=W)
     self.treeList.heading("lname", text = "Last Name", anchor=W)
     self.treeList.heading("phone", text = "Phone", anchor=W)
@@ -118,6 +133,7 @@ def load_gui(self):
     # Label for the Treeview
     self.lbl_info = tk.Label(self.master,text='Students:')
     self.lbl_info.grid(row=0,column=1,padx=(12,0),pady=(10,0),sticky=N+W)
+
     # Grid the Treeview widget
     self.treeList.grid(row=1, column=1, padx=(15,0), rowspan=9, columnspan=2, sticky=N+S+E+W)
                          

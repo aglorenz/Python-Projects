@@ -61,8 +61,10 @@ def count_records(cur):
     count = cur.fetchone()[0]
     return cur,count
 
-# Select item in ListBox
+# Select item in Treeview
 def onSelect(self,event):
+    print("hi onSelect called")
+    return
     #calling the event is the self.lstList1 widget
     varList = event.widget
     select = varList.curselection()[0]
@@ -180,6 +182,9 @@ def onRefresh(self):
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM student")   
         rows = cursor.fetchall()
+###
+###  put the id in column #1 or #0 (determine this first) instead of the text field and just hide  columns 0 and 1 - Find out how to hide specific columns
+###        
         for row in rows:    # loop through the query results and insert each full name into the list box
             #print(row)
             self.treeList.insert(parent='', index='end', text=row[0],
