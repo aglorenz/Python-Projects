@@ -52,14 +52,6 @@ def load_gui(self):
     self.txt_course = tk.Entry(self.master,text='')
     self.txt_course.grid(row=9,column=0,rowspan=1,padx=(30,0),pady=(0,0),sticky=N+E+W)
 
-    # Define the listbox with a scrollbar and grid them
-##    self.scrollbar1 = Scrollbar(self.master,orient=VERTICAL)
-##    self.lstList1 = Listbox(self.master,exportselection=0,yscrollcommand=self.scrollbar1.set)
-##    self.lstList1.bind('<<ListboxSelect>>',lambda event: student_func.onSelect(self,event))
-##    self.scrollbar1.config(command=self.lstList1.yview)
-##    self.scrollbar1.grid(row=1,column=5,rowspan=9,columnspan=1,padx=(0,0),pady=(0,0),sticky=N+E+S)
-##    self.lstList1.grid(row=1,column=2,rowspan=9,columnspan=3,padx=(0,0),pady=(0,0),sticky=N+E+S+W)
-
     ######################################################
     # Define the Treeview with 2 scrollbars and grid them
     ######################################################
@@ -70,13 +62,11 @@ def load_gui(self):
 
     # These are the columns we want to display. Column #0, the primary key, "ID" will be hidden 
     # Define identifiers for columns in Treeview widget
-    columns = ("ID","fname","lname","phone","email","course")
-    displayColumns = ("fname","lname","phone","email","course")
+    columns = ("ID","fname","lname","phone","email","course") # All columns
+    displayColumns = ("fname","lname","phone","email","course") # columns that will be displayed
+    
     # here's a way to combine the above three commented out statements into one
     self.treeList = ttk.Treeview(self.master,columns=columns,displaycolumns=displayColumns,show='headings')
-
-    self.treeList.bind('<<TreeviewSelect>>',lambda event: student_func.onSelect(self,event))
-
 
 ##    self.treeList.column("#0", anchor=W, width=40) 
 ##    self.treeList.column("#0", width=0, stretch=NO) # not displayed, but will hold primary key (first column) from db
@@ -89,7 +79,7 @@ def load_gui(self):
 
     # Define display column headings
 ##    self.treeList.heading("#0", text = "ID", anchor=W)
-    self.treeList.heading("ID", text = "Student ID", anchor=W)
+    self.treeList.heading("ID", text = "Student ID", anchor=W) # will be hidden and hold primary key
     self.treeList.heading("fname", text = "First Name", anchor=W)
     self.treeList.heading("lname", text = "Last Name", anchor=W)
     self.treeList.heading("phone", text = "Phone", anchor=W)
@@ -105,7 +95,14 @@ def load_gui(self):
 
     # Grid the Treeview widget
     self.treeList.grid(row=1, column=1, padx=(15,0), rowspan=9, columnspan=2, sticky=N+S+E+W)
-                         
+
+    # Add a vertical scrollbar widget
+    self.scrollbar = Scrollbar(self.master, orient=VERTICAL, command=self.treeList.yview)
+    self.treeList.configure(yscroll=self.scrollbar.set)
+
+    # Grid the Scrollbar widget
+    self.scrollbar.grid(row=1, column=3, rowspan=9, sticky=N+S)
+    
     # Buttons
     self.btn_add = tk.Button(self.master,width=12,height=2,text='Add',command=lambda: student_func.onAdd(self))
     self.btn_add.grid(row=10,column=0,padx=(27,0),pady=(45,10),sticky=W+E)
@@ -114,9 +111,12 @@ def load_gui(self):
     self.btn_close = tk.Button(self.master,width=12,height=2,text='Close',command=lambda: student_func.ask_quit(self))
     self.btn_close.grid(row=10,column=2,columnspan=1,padx=(15,0),pady=(45,10),sticky=W+E)
 
-    student_func.create_db(self)
-    student_func.onRefresh(self)
+    # onSelect is only a stub now; saving for future
+    # bind the select event
+    self.treeList.bind('<<TreeviewSelect>>',lambda event: student_func.onSelect(self,event))
 
+    student_func.create_db(self)  # create the db if it doesn't exist
+    student_func.onRefresh(self)  # display any data found in the db on the Treeview
 
 if __name__ == "__main__":
     pass

@@ -61,10 +61,11 @@ def count_records(cur):
     count = cur.fetchone()[0]
     return cur,count
 
-# Select item in Treeview
+# Select item in Treeview (This function does nothing right now)
 def onSelect(self,event):
-    print("hi onSelect called")
+    print("onSelect function called")
     return
+    # the rest of this code is from the listbox Phonebook app.  Keeping here as template in case it's needed.
     #calling the event is the self.lstList1 widget
     varList = event.widget
     select = varList.curselection()[0]
