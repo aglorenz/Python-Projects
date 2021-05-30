@@ -118,60 +118,31 @@ def onAdd(self):
         messagebox.showerror("Missing Text Error","Please ensure that there is data in all fields.")
 
 def onDelete(self):
-    try:
-        currRows = self.treeList.selection()
-        print("Number of rows selected = {}".format(len(currRows)))
-        if len(currRows) == 0:
-            messagebox.showinfo("Missing selection","No student was selected for deletion. \nCancelling Delete request.")
-        else:
-            confirm = messagebox.askokcancel("Delete Confirmation",
-                                             "All selected information will be permanently"
-                                             "\ndeleted from the database."
-                                             "\n\nDo you wish to proceed?")
-            if confirm:
-                conn = sqlite3.connect('school.db')
-                with conn:
-                    # delete all selected rows
-                    cursor = conn.cursor()
-                    # for each selected row, delete it from the database and the Treeview
-                    for index in currRows:  
-                        print("\nIndex of selected Treeview row = {0}".format(index))
-                        print("Treeview row contents = {}".format(self.treeList.item(index)))
-                        rowValues = (self.treeList.item(index)["values"])
-                        studentID = rowValues[0]
-                        # index 0 is the studentID (hidden from display) we will use when deleting the row from the database
-                        print("Student ID = {0}".format(studentID))
-                        cursor.execute("DELETE FROM student WHERE ID = {}".format(studentID))
-                        self.treeList.delete(index)
-                    return
-    except:
-        messagebox.showinfo("Missing selection","No name was selected from the list box. \nCancelling the Delete request.")
-        return
-    conn = sqlite3.connect('school.db')
-    with conn:
-        cur = conn.cursor()
-        # check count to ensure that this is not the  last record in
-        # the database.... cannot delete last record or we will get an error
-        cur.execute("SELECT COUNT(*) FROM student")
-        count = cur.fetchone()[0]
-        if count > 0:
-            confirm = messagebox.askokcancel("Delete Confirmation", "All information associated with, ({})"
-                                             "\n will be permanently deleted from the database."
-                                             "\n\nProceed with the deletion request?".format(fullName))
-            if confirm:
-                conn = sqlite3.connect('school.db')
-                with conn:
-                    cursor = conn.cursor()
-                    cursor.execute("DELETE FROM student WHERE ID = '{}'".format(studentID))
-                
-                #onDeleted(self) # call the function to clear all of the textboxes and the selected index of listbox
-                #### onRefresh(self) # update the listbox of the changes
-                #conn.commit()
-        else:
-            confirm = messagebox.showerror("Last Record Error", "({}) is the last record in the databsase and " 
-                                            "cannot be deleted at this time. \n\nPlease add another record " 
-                                            "first before deleting ({}).".format(var_select, fullName))
-    conn.close()
+    currRows = self.treeList.selection()
+    print("Number of rows selected = {}".format(len(currRows)))
+    if len(currRows) == 0:
+        messagebox.showinfo("Missing selection","No student was selected. \nCancelling Delete request.")
+    else:
+        confirm = messagebox.askokcancel("Delete Confirmation",
+                                         "All selected information will be permanently"
+                                         "\ndeleted from the database."
+                                         "\n\nDo you wish to proceed?")
+        if confirm:
+            conn = sqlite3.connect('school.db')
+            with conn:
+                # delete all selected rows
+                cursor = conn.cursor()
+                # for each selected row, delete it from the database and the Treeview
+                for index in currRows:  
+                    print("\nIndex of selected Treeview row = {0}".format(index))
+                    print("Treeview row contents = {}".format(self.treeList.item(index)))
+                    rowValues = (self.treeList.item(index)["values"])
+                    studentID = rowValues[0]
+                    # index 0 is the studentID (hidden from display) we will use when deleting the row from the database
+                    print("Student ID = {0}".format(studentID))
+                    cursor.execute("DELETE FROM student WHERE ID = {}".format(studentID))
+                    self.treeList.delete(index)
+                return
 
 def onDeleted(self):
     # clear the text in these textboxes
