@@ -71,7 +71,7 @@ def score(nice,mean,name):
         win(nice,mean,name)
     if mean > 2: # if condition is valid, call losew function passing in the variables so it can usew them
         lose(nice,mean,name)
-    else:       # else, call nice_mean function passing in the vvariables so iti can usew them
+    else:       # else, call nice_mean function passing in the variables so iti can usew them
         nice_mean(nice,mean,name)
 
 # print message and sound when player wins.

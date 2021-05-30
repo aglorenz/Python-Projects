@@ -90,44 +90,64 @@ def onSelect(self,event):
 def onAdd(self):
     # Add the field entries to the Treelist and to the database
     # normalize the data to keep it consistent in the database
-    var_fname = self.txt_fname.get().strip().title() # get text, stip of whitespace and capitalize it
-    var_lname = self.txt_lname.get().strip().title()
-    var_phone = self.txt_phone.get().strip()
-    var_email = self.txt_email.get().strip()
-    var_course = self.txt_course.get().strip().title()
+    fname = self.txt_fname.get().strip().title() # get text, stip of whitespace and capitalize it
+    lname = self.txt_lname.get().strip().title()
+    phone = self.txt_phone.get().strip()
+    email = self.txt_email.get().strip()
+    course = self.txt_course.get().strip().title()
 
-    var_fullname = ("{} {}".format(var_fname,var_lname)) # combine our normalized names into a fulname
-    print("var_fullname: {}".format(var_fullname))
-
-    if not "@" or not "." in var_email: # will use this soon
+    if not "@" or not "." in email: # will use this soon
         print("Incorrect email format!!!")
-    if (len(var_fname) > 0) and (len(var_lname) > 0) and (len(var_phone) > 0) \
-       and (len(var_email) > 0) and (len(var_course) > 0):
+    # Make sure all fields have been entered
+    if (len(fname) > 0) and (len(lname) > 0) and (len(phone) > 0) \
+       and (len(email) > 0) and (len(course) > 0):
         conn = sqlite3.connect('school.db')
         with conn:
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO student (fname, lname, phone, email, course)\
+            # An attempt to make sure that the INSERT and the return of lastrowid is one transaction.  Hoping to prevent
+            # a second thread from inserting a row and lastrowid returning the rowid of the second INSERT.
+            cursor.execute("BEGIN") 
+            # Insert the new row and capture the last used rowid needed for the Treeview StudentID (a hidden column)
+            studentID = cursor.execute("INSERT INTO student (fname, lname, phone, email, course)\
                             VALUES (?,?,?,?,?)",
-                           (var_fname, var_lname, var_phone, var_email, var_course))
+                           (fname, lname, phone, email, course)).lastrowid
             self.treeList.insert(parent='', index='end', text="",
-                                 values=(var_fname,var_lname, var_phone, var_email, var_course))
+                                 values=(studentID,fname,lname,phone,email,course))
             onClear(self) # call the function to clear all of the textboxes
     else:
         messagebox.showerror("Missing Text Error","Please ensure that there is data in all fields.")
 
 def onDelete(self):
     try:
-        currItem = self.treeList.selection()
-        for item in currItem:  # move this to the delete secion and loop on it deleting each row from db and removing row from list
-            print(self.treeList.item(item))
-        studentID = (self.treeList.item(currItem)["values"]) # first column (hidden) in the tree list holds the student primary key
-        print(studentID[0])
-        return
-##        fullName = self.treeList.get(self.treeList.curselection()) # Treelist's selected value.  Error if nothing is selected
+        currRows = self.treeList.selection()
+        print("Number of rows selected = {}".format(len(currRows)))
+        if len(currRows) == 0:
+            messagebox.showinfo("Missing selection","No student was selected for deletion. \nCancelling Delete request.")
+        else:
+            confirm = messagebox.askokcancel("Delete Confirmation",
+                                             "All selected information will be permanently"
+                                             "\ndeleted from the database."
+                                             "\n\nDo you wish to proceed?")
+            if confirm:
+                conn = sqlite3.connect('school.db')
+                with conn:
+                    # delete all selected rows
+                    cursor = conn.cursor()
+                    # for each selected row, delete it from the database and the Treeview
+                    for index in currRows:  
+                        print("\nIndex of selected Treeview row = {0}".format(index))
+                        print("Treeview row contents = {}".format(self.treeList.item(index)))
+                        rowValues = (self.treeList.item(index)["values"])
+                        studentID = rowValues[0]
+                        # index 0 is the studentID (hidden from display) we will use when deleting the row from the database
+                        print("Student ID = {0}".format(studentID))
+                        cursor.execute("DELETE FROM student WHERE ID = {}".format(studentID))
+                        self.treeList.delete(index)
+                    return
     except:
         messagebox.showinfo("Missing selection","No name was selected from the list box. \nCancelling the Delete request.")
         return
-    conn = sqlite3.connect('.db')
+    conn = sqlite3.connect('school.db')
     with conn:
         cur = conn.cursor()
         # check count to ensure that this is not the  last record in
@@ -175,7 +195,7 @@ def onClear(self):
     self.txt_course.delete(0,END)
 
 def onRefresh(self):
-    # Populate the listbox with full names from the database
+    # Populate the Treeview with data from the database
     #self.treeList.delete(0,END)
     conn = sqlite3.connect('school.db')
     with conn:
@@ -186,9 +206,12 @@ def onRefresh(self):
 ###  put the id in column #1 or #0 (determine this first) instead of the text field and just hide  columns 0 and 1 - Find out how to hide specific columns
 ###        
         for row in rows:    # loop through the query results and insert each full name into the list box
-            #print(row)
-            self.treeList.insert(parent='', index='end', text=row[0],
-                                 values=(row[1],row[2],row[3],row[4],row[5]))  # row[0] is the ID, text=row[0] is primary key and is hidden
+            print(row)
+##            self.treeList.insert(parent='', index='end', text=row[0],
+##                                 values=(row[1],row[2],row[3],row[4],row[5]))  # row[0] is the ID, text=row[0] is primary key and is hidden
+##            self.treeList.insert(parent='', index='end',
+##                                 values=(row[0],row[1],row[2],row[3],row[4],row[5]))  # row[0] is the ID, text=row[0] is primary key and is hidden
+            self.treeList.insert(parent='',index='end',values=(row))  # row[0] is the ID, primary key and is hidden
 
     
 def onUpdate(self):

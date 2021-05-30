@@ -27,40 +27,6 @@ def load_gui(self):
         for pacing the widgets, but is a little confusing at
         first, but that is what this demo is here for...
     """
-##    self.btn_column = tk.Button(self.master,text="I'm in column 3")
-##    self.btn_column.grid(column=3, row=0, rowspan=2, sticky=N+S)
-##
-##    self.btn_columnspan = tk.Button(self.master, text="I am in column 2", width='10')
-##    self.btn_columnspan.grid(column=2,row=1)
-##
-##    self.btn_columnspan1 = tk.Button(self.master, text="I am in column 2", width='10')
-##    self.btn_columnspan1.grid(column=2,row=0)
-##
-##    self.btn_column0 = tk.Button(self.master, text="I am in column 0", width='20')
-##    self.btn_column0.grid(column=0, row=0, columnspan=2, rowspan=3, sticky=N+S)
-##
-##    self.btn_column2 = tk.Button(self.master, text="I am in column 2", width='20')
-##    self.btn_column2.grid(column=2, row=2, columnspan=2, sticky=E+W)
-##
-##    self.btn_column2 = tk.Button(self.master, text="I am in column 1", width='10')
-##    self.btn_column2.grid(column=0, row=3, sticky=W)
-    
-##    self.btn_close = tk.Button(self.master,width=12,height=2,text='Close',command=lambda: student_func.ask_quit(self))
-##    self.btn_close.grid(row=10,column=4,columnspan=1,padx=(15,0),pady=(45,10),sticky=E)
-
-#---------------------------------------------------------------
-
-#    self.l1 = tk.Label(self.master, text = "First:")
-#    self.l1.grid(row = 0, column = 0, sticky = E, pady = 2)
-#    self.l2 = tk.Label(self.master, text = "Second:")
-#    self.l2.grid(row = 1, column = 0, sticky = E, pady = 2)
-
-#    self.e1 = tk.Entry(self.master)
-#    self.e1.grid(row=0,column=0,columnspan=4,sticky=N+S+W+E)
-#    self.e2 = tk.Entry(self.master)
-#    self.e2.grid(row=1,column=1,pady=3,columnspan=3,sticky=W+E)
-
-#--------------------------------------------------------------------
 
     # Labels
     self.lbl_fname = tk.Label(self.master,text='First Name:')
@@ -104,15 +70,17 @@ def load_gui(self):
 
     # These are the columns we want to display. Column #0, the primary key, "ID" will be hidden 
     # Define identifiers for columns in Treeview widget
-    columns = ("fname","lname","phone","email","course")
+    columns = ("ID","fname","lname","phone","email","course")
+    displayColumns = ("fname","lname","phone","email","course")
     # here's a way to combine the above three commented out statements into one
-    self.treeList = ttk.Treeview(self.master,columns=columns, show='headings')
+    self.treeList = ttk.Treeview(self.master,columns=columns,displaycolumns=displayColumns,show='headings')
 
     self.treeList.bind('<<TreeviewSelect>>',lambda event: student_func.onSelect(self,event))
 
 
 ##    self.treeList.column("#0", anchor=W, width=40) 
 ##    self.treeList.column("#0", width=0, stretch=NO) # not displayed, but will hold primary key (first column) from db
+    self.treeList.column("ID", anchor=W, width=120)
     self.treeList.column("fname", anchor=W, width=120)
     self.treeList.column("lname", anchor=W, width=120)
     self.treeList.column("phone", anchor=W, width=120)
@@ -121,6 +89,7 @@ def load_gui(self):
 
     # Define display column headings
 ##    self.treeList.heading("#0", text = "ID", anchor=W)
+    self.treeList.heading("ID", text = "Student ID", anchor=W)
     self.treeList.heading("fname", text = "First Name", anchor=W)
     self.treeList.heading("lname", text = "Last Name", anchor=W)
     self.treeList.heading("phone", text = "Phone", anchor=W)
