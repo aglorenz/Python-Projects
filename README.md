@@ -27,4 +27,5 @@ Demonstrate Classes, Inheritance, and a parameterized class constructor.
 
 **Enhancement:** I learned how to use multi-line f strings for the method output.
 
-## [Student Tracking Tkinter SQLite3 ](https://github.com/aglorenz/Python-Projects/tree/main/Polymorphism)
+## [Student Tracking with Tkinter and SQLite3 ](https://github.com/aglorenz/Python-Projects/tree/main/StudentTrackingApp)
+This application uses Tkinter and SQLite3 to gather Student data from 5 input fields, add the data to a database table, and display it on a Treeview widget. The application has the following buttons Add, Delete, and Close.  The delete function deletes all records selected from the Treeview and database.
