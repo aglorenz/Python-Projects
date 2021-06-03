@@ -39,4 +39,3 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * You can hide columns from the user and still have the data available to the program.
 * lastrowid is a handy function to capture the last id used when inserting into a database.
 * I may need to research lastrowid to see if the id is always from the row you entered (when considering concurrency).  I used cursor.execute("BEGIN") to try to create a transaction.  I will test this someday as this concern is not critical on a single user database.
-* 
