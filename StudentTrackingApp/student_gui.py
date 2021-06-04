@@ -9,9 +9,8 @@
 # Tested OS:  This code was written and tested to work with Windows 10.
 #
 
-from tkinter import *
-from tkinter import ttk # Treeview widget comes from ttk
 import tkinter as tk
+from tkinter import ttk # Treeview widget comes from ttk
 
 # Import our other modules
 # so we can access them
@@ -30,7 +29,7 @@ def load_gui(self):
 
     # Labels
     self.lbl_fname = tk.Label(self.master,text='First Name:')
-    self.lbl_fname.grid(row=0,column=0,padx=(27,0),pady=(10,0),sticky=N+W)
+    self.lbl_fname.tk.grid(row=0,column=0,padx=(27,0),pady=(10,0),sticky=N+W)
     self.lbl_lname = tk.Label(self.master,text='Last Name:')
     self.lbl_lname.grid(row=2,column=0,padx=(27,0),pady=(10,0),sticky=N+W)
     self.lbl_phone = tk.Label(self.master,text='Phone Number:')

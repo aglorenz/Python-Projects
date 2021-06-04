@@ -53,20 +53,14 @@ def create_db(self):
             course TEXT \
             );")
         # You must commit() to save changes & close the database connection
-        conn.commit()
-
-def count_records(cur):
-    count = ""
-    cur.execute("SELECT COUNT(*) FROM student")
-    count = cur.fetchone()[0]
-    return cur,count
+        # conn.commit()  # This is not necessary if you are using the with statement
 
 # Select item in Treeview (This function does nothing right now)
 def onSelect(self,event):
     print("onSelect function called")
     return
     # the rest of this code is from the listbox Phonebook app.  Keeping here as template in case it's needed.
-    #calling the event is the self.lstList1 widget
+    # calling the event is the self.lstList1 widget
     varList = event.widget
     select = varList.curselection()[0]
     value = varList.get(select)
@@ -105,7 +99,7 @@ def onAdd(self):
         conn = sqlite3.connect('school.db')
         with conn:
             cursor = conn.cursor()
-            # An attempt to make sure that the INSERT and the return of lastrowid is one transaction.  Hoping to prevent
+            # This is an attempt to make sure that the INSERT and the return of lastrowid is one transaction.  Hoping to prevent
             # a second thread from inserting a row and lastrowid returning the rowid of the second INSERT.
             cursor.execute("BEGIN") 
             # Insert the new row and capture the last used rowid needed for the Treeview StudentID (a hidden column)
@@ -145,19 +139,6 @@ def onDelete(self):
                     self.treeList.delete(index)
                 return
 
-def onDeleted(self):
-    # clear the text in these textboxes
-    self.txt_fname.delete(0,END)
-    self.txt_lname.delete(0,END)
-    self.txt_phone.delete(0,END)
-    self.txt_email.delete(0,END)
-##  onRefresh(self) # update the listbox of the changes
-    try:
-        index = self.lstList1.curselection()[0]
-        self.lstList1.delete(index)
-    except IndexError:
-        pass
-
 def onClear(self):
     # clear the text in these textboxes
     self.txt_fname.delete(0,END)
@@ -185,56 +166,6 @@ def onRefresh(self):
 ##                                 values=(row[0],row[1],row[2],row[3],row[4],row[5]))  # row[0] is the ID, text=row[0] is primary key and is hidden
             self.treeList.insert(parent='',index='end',values=(row))  # row[0] is the ID, primary key and is hidden
 
-    
-def onUpdate(self):
-    try:
-        var_select = self.lstList1.curselection()[0] # index of the list selection
-        var_fullName = self.lstList1.get(var_select) # list selection's text value
-    except:
-        messagebox.showinfo("Missing selection","No name was selected from the list box. \nCancelling the Update request.")
-        return
-    # The user will only abe allowed to update changes for phone and emails.
-    # for name changes, the user iwll need to delete the entire record and start over.
-    var_phone = self.txt_phone.get().strip() # normalize the data to maintain database ingegrity
-    var_email = self.txt_email.get().strip()
-    if (len(var_phone) > 0) and (len(var_email) > 0): # ensure data is present
-        conn = sqlite3.connect('school.db')
-        with conn:
-            cur = conn.cursor()
-            # countrecords to see if the user's changes are already in
-            # the database...meaning, there are no changes to update.
-            # Updated the query to check if the ph/email values for the selected name have changed
-            #  (rather than if they exist anywhere in the db.
-            #  Assumption (biz rule) is that multiple people can share the same email and phone number 
-            cur.execute("SELECT COUNT(*) FROM student WHERE phone = '{}' and col_fullname = '{}'".format(var_phone,var_fullName))
-            count = cur.fetchone()[0]
-            print(count)
-            cur.execute("SELECT COUNT(*) FROM student WHERE email = '{}' and col_fullname = '{}'".format(var_email,var_fullName))
-            count2 = cur.fetchone()[0]
-            print(count2)
-            if count == 0 or count2 == 0: # if proposed changes are not already in the database, then proceed
-                response = messagebox.askokcancel("Update Request","The following changes({}) and ({}) will be implemented for ({})."
-                                                  "\n\nProceed with the update request?".format(var_phone,var_email,var_fullName))
-                print(response)
-                if response:
-                    with conn:
-                        cursor = conn.cursor()
-                        cursor.execute("UPDATE student \
-                                        SET phone = '{}', email = '{}' \
-                                        WHERE col_fullname = '{}'".format(var_phone,var_email,var_fullName))
-                        onClear(self)
-                        conn.commit()
-                else:
-                    messagebox.showinfo("Cancel request","No changes have been made to ({}).".format(var_fullName))
-            else:
-                messagebox.showinfo("No changes detected","Values ({}) and ({}) \nalready exist for "
-                                    "{}. \n\nYour update request has been cancelled.".format(var_phone,var_email,var_fullName))
-            onClear(self)
-        conn.close()
-    else:
-        messagebox.showerror("Missing information","Please select a name from the list."
-                             "\nThen edit the phone or email information.")
-        onClear(self)
 
 if __name__ == "__main__":
     pass

@@ -6,11 +6,14 @@
 # Purpose:      Simple Student Tracking App. Demonstrating OOP, Tkinter GUI module,
 #               using Tkinter Parent and Child relationships.
 #
-# Tested OS:    This code was written and tested wo work with Windows 10.
+# Tested OS:    This code was written and tested to work with Windows 10.
 
-from tkinter import *
-from tkinter import ttk # treeview widget comes from ttk
+# Using the wildcoard is bad practice because w/o it, you have to explicitly state which tool kit you are using
+# which makes for easier reading.  W/O it, you have to prefix widgets with the toolkit like so:  tk.Frame vs Frame
+#from tkinter import *  
+
 import tkinter as tk
+from tkinter import ttk # treeview widget comes from ttk
 
 
 # Import our other modules
@@ -19,9 +22,9 @@ import student_func
 
 
 # Frame is the Tkinter frame class that our own class will inherit from
-class ParentWindow(Frame):
+class ParentWindow(tk.Frame):
     def __init__(self, master, *args, **kwargs):
-        Frame.__init__(self, master, *args, **kwargs)
+        tk.Frame.__init__(self, master, *args, **kwargs)
 
         # define our master frame configuration
         self.master = master
