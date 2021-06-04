@@ -26,3 +26,16 @@ Demonstrate Classes, Inheritance, and a parameterized class constructor.
 * Each child class declares the method with the same name as the parent and overrides the parent method with a different implementation.
 
 **Enhancement:** I learned how to use multi-line f strings for the method output.
+
+## [Student Tracking with Tkinter and SQLite3 ](https://github.com/aglorenz/Python-Projects/tree/main/StudentTrackingApp)
+This application uses Tkinter and SQLite3 to gather Student data from 5 input fields, add the data to a database table, and display it on a Treeview widget. The application has the following buttons Add, Delete, and Close.  The delete function deletes all records selected from the Treeview and database.
+
+**Notes**
+* The primary key of the database is in Treeview column 0 and is hidden since it's not important to the user.
+* Though this column is hidden, it's values are available for identifying db rows for deletion.
+
+**Things I learned**
+* Treeview is great for tabular data and can be used for heirarchical tabular data.
+* You can hide columns from the user and still have the data available to the program.
+* lastrowid is a handy function to capture the last id used when inserting into a database.
+* I may need to research lastrowid to see if the id is always from the row you entered (when considering concurrency).  I used cursor.execute("BEGIN") to try to create a transaction.  I will test this someday as this concern is not critical on a single user database.
