@@ -21,10 +21,10 @@ import student_func
 
 # Frame is the Tkinter frame class that our own class will inherit from
 class ParentWindow(tk.Frame):
-    """Class docstrings go here."""
+    """Class to create a parent window of the application"""
     
     def __init__(self, master, *args, **kwargs):
-        '''Class Method docstrings go here.'''
+        '''Class initialization to define the window and load gui widgets for the app'''
 
         tk.Frame.__init__(self, master, *args, **kwargs)
 
