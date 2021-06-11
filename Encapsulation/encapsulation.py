@@ -21,18 +21,7 @@ import student_func
 
 # Frame is the Tkinter frame class that our own class will inherit from
 class ParentWindow(tk.Frame):
-    """
-    Class to create a parent window of the application
-  
-    Extended description of function.
-  
-    Parameters:
-    arg1 (int): Description of arg1
-  
-    Returns:
-    int: Description of return value
-  
-    """
+    """Class to create a parent window of the application"""
     
     def __init__(self, master, *args, **kwargs):
         '''Class initialization to define the window and load gui widgets for the app'''
