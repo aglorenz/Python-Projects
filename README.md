@@ -1,5 +1,5 @@
 # Python Projects 
-Projects from the Python course at The Tech Academy.
+Projects from the Tech Academy Python course.
 ```
 All projects written in Python 3.9.5 unless otherwise noted
 ```
