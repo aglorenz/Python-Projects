@@ -3,53 +3,39 @@
 #
 # Author:       Andrew Lorenz
 #
-# Purpose:      Simple Student Tracking App. Demonstrating OOP, Tkinter GUI module,
-#               using Tkinter Parent and Child relationships.
+# Purpose:      Create a class that uses encapsulation.  The class should use:
+#               1) a private attribute or function
+#               2) a protected attribute or function
+#
+#               Create an object that uses the protected and private attribute or function
 #
 # Tested OS:    This code was written and tested to work with Windows 10.
 
-# Using the wildcoard is bad practice  W/O it, you have to explicitly state which tool kit you are using
-# which makes for easier reading.  W/O it, you have to prefix widgets with the toolkit like so:  tk.Frame vs Frame
-#from tkinter import *  
 
-import tkinter as tk
-from tkinter import ttk # treeview widget comes from ttk
-
-# Import our other modules
-import student_gui
-import student_func
-
-# Frame is the Tkinter frame class that our own class will inherit from
-class ParentWindow(tk.Frame):
-    """Class to create a parent window of the application"""
+# 
+class Student:
+    """Class to demonstrate encapsulation"""
     
-    def __init__(self, master, *args, **kwargs):
-        '''Class initialization to define the window and load gui widgets for the app'''
+    def __init__(self, name, phone):
+        # protected vars prefixed with _
+        self._fname = name
+        self._phone = phone
+        self.__highSchool = "Cordova" # private class attribute use __
+        
+    def getHighSchool(self):
+        return self.__highSchool
 
-        tk.Frame.__init__(self, master, *args, **kwargs)
-
-        # define our master frame configuration
-        self.master = master
-        self.master.minsize(800,350)  # Height and Width
-        self.master.maxsize(800,350)
-
-        # This CenterWindow method will center our app on the user's screen
-        student_func.center_window(self,800,350)
-        self.master.title("Student Tracking")
-        self.master.configure(bg="#F0F0F0")
-
-        # This protocol method is a tkinter built-in method to catch if
-        # the user clicks the upper corner, "X" on Windows OS
-        self.master.protocol("WM_DELETE_WINDOW", lambda: student_func.ask_quit(self))
-        arg = self.master
-
-        # load in the GUI widgets from a separate module
-        # keeping code comparmentalized and clutter free
-        student_gui.load_gui(self)
-
+    def setHighSchool(self, highSchool):
+        self.__highSchool = highSchool
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    App = ParentWindow(root)
-    root.mainloop()
+    student1 = Student("Andy","555-555-5555")
+    print("Student Name: {}\nPhone: {}\n"
+          .format(student1._fname,student1._phone))
+
+    # print(student1.__highSchool) # this will fail.  Must use get/set functions to access
     
+    print("{}'s high school is {}".format(student1._fname, student1.getHighSchool()))
+    print("Updating {}'s high school".format(student1._fname))
+    student1.setHighSchool("Cactus")
+    print("{}'s high school is now {}".format(student1._fname, student1.getHighSchool()))
