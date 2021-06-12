@@ -4,16 +4,6 @@ Projects from the Python course at The Tech Academy.
 All projects written in Python 3.9.5 unless otherwise noted
 ```
 
-### Table of Contents  
-* [Nice or Mean Game](#nicemean)
-* [Database SQLite3](#databasesqlite3)
-* [Inheritance](#inheritance)
-* [Polymorphism](#polymorphism)
-* [Student Tracking with Tkinter, Treeview, and SQLite3](#treeview)
-* [Encapsulation](#encapsulation)
-
-   
-
 ## [Nice or Mean Game (3.9.4)](https://github.com/aglorenz/Python-Projects/tree/main/Nice%20or%20Mean%20Game) <a name="nicemean"/>
 A simple follow along exercise that creates a game using multiple parameterized functions.  If player select N (nice) they get 1 point for being nice.  If they select M they get 1 point for being mean.  Game loops until palyer reaches 3 nice or 3 mean points.  An appopriate message is printed depending if the player is nice or mean.
 
