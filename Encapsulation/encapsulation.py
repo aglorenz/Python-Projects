@@ -17,15 +17,16 @@ class Student:
     """Class to demonstrate encapsulation"""
     
     def __init__(self, name, phone):
-        # protected vars prefixed with _
+        # protected vars are prefixed with _
         self._fname = name
         self._phone = phone
-        self.__highSchool = "Cordova" # private class attribute use __
+        self.__highSchool = "Cordova" # private class attribute prefixed with __
         
-    def getHighSchool(self):
+    # Private attributes must be accessed with get/set functions else you get an error
+    def getHighSchool(self):        # Gets the private attribute value
         return self.__highSchool
 
-    def setHighSchool(self, highSchool):
+    def setHighSchool(self, highSchool): # Set's the value of the private attribute
         self.__highSchool = highSchool
 
 if __name__ == "__main__":
