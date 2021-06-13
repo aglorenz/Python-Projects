@@ -10,7 +10,7 @@ class Car(ABC): # ABC = ABstract Class, imported from abc
     def payment(self, amount):
         pass
 
-# Child Class must define the implementation of its parent's abstract method
+# This child class must define the implementation of its parent's abstract method
 class DebitCardPayment(Car):
     # Here we implement the payment method from the parent Car class
     def payment(self, amount):
@@ -18,7 +18,7 @@ class DebitCardPayment(Car):
 
 obj = DebitCardPayment()
 obj.pay_slip("$400")
-obj.paysment("$400")
+obj.payment("$400")
              
 # Output
 # Your purchase amount:  $400
