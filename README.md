@@ -54,4 +54,4 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * Create at least one object that that utilizes both the parent and child methods
 
 **What I learned**
-* Abstract methods are useful for when we want to provide a common interface for different implementations of a component such as payment method.
+* Abstract methods are useful for when we want to provide a common interface for different implementations of a component such as payment method.  Good for API's
