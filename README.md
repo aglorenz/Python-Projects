@@ -1,5 +1,5 @@
 # Python Projects 
-Projects from the Tech Academy Python course.
+**Projects from the Tech Academy Python course**
 ```
 All projects written in Python 3.9.5 unless otherwise noted
 ```
@@ -33,7 +33,7 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * The primary key of the database is in Treeview column 0 and is hidden since it's not important to the user.
 * Though this column is hidden, it's values are available for identifying db rows for deletion.
 
-**Things I learned**
+**What I learned**
 * Currently learning proper use of docstrings and their different types...
 * Treeview is great for tabular data and can be used for heirarchical tabular data.
 * You can hide columns from the user and still have the data available to the program.
@@ -41,7 +41,17 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * I may need to research lastrowid to see if the id is always from the row you entered (when considering concurrency).  I used cursor.execute("BEGIN") to try to create a transaction.  I will test this someday as this concern is not critical on a single user database.
 
 ## [Encapsulation](https://github.com/aglorenz/Python-Projects/tree/main/Encapsulation)
+**Demonstrate Encapsulation**
 * Create a class that uses encapsulation.  The class should use:
   * A private attribute or function
   * A protected attribute or function
 * Create an object that uses the protected and private attribute or function
+
+## [Abstraction](https://github.com/aglorenz/Python-Projects/tree/main/Abstraction)
+**Demonstrate Abstraction Concepts**
+* Create a class with at least one abstract method and one regular method.
+* Create a child class that implements the parent class's abstract method.
+* Create at least one object that that utilizes both the parent and child methods
+
+**What I learned**
+* Abstract methods are useful for when we want to provide a common interface for different implementations of a component such as payment method.
