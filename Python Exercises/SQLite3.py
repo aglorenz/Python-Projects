@@ -6,6 +6,9 @@ last_name = input("Enter your last name: ")
 age = int(input("Enter your age: "))
 
 # execute insert statement for supplied person data
+# conn = sqlite3.connect(':memory:')
+# with conn: # db in RAM
+#   cur = conn.cursor():
 with sqlite3.connect('test_database.db') as connection:
     c = connection.cursor()
     line = "INSERT INTO People VALUES ('"+ first_name +"', '"+ last_name +"', " +str(age) +")"
