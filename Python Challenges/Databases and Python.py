@@ -1,4 +1,5 @@
 import sqlite3
+from tabulate import tabulate
 
 # open database in RAM
 ##with sqlite3.connect(':memory:') as connection:
@@ -29,12 +30,18 @@ with conn:
     print(sqlcmd)
     cur.execute(sqlcmd)
 
-    # print the rows
-    sqlcmd = "SELECT * FROM Roster WHERE species = 'Human'"
-    print(sqlcmd)
+    # print two columns from each row one at a time
+    sqlcmd = "SELECT name, IQ FROM Roster WHERE species = 'Human'"
+    print("\n"+sqlcmd)
     cur.execute(sqlcmd)
     row = cur.fetchone()
     while row is not None:
-        print(row)
+        print("Name: {}, IQ: {}".format(row[0], row[1]))
         row = cur.fetchone()
-              
+
+    # print the rows all at once using tabulate
+    print("\n"+sqlcmd)
+    cur.execute(sqlcmd)
+    data = cur.fetchall()
+    print (tabulate(data, headers=["Name","IQ"]))
+ 
