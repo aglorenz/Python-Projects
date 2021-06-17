@@ -12,7 +12,7 @@ with conn:
     # Create the table
     sqlcmd = "CREATE TABLE if not exists Roster( \
         name TEXT, species TEXT, IQ INT)" 
-    print(sqlcmd)
+    print("\n"+sqlcmd)
     cur.execute(sqlcmd)
 
     # populate with 5th element movie characters
@@ -31,8 +31,13 @@ with conn:
     cur.execute(sqlcmd)
 
     # print two columns from each row one at a time
-    sqlcmd = "SELECT name, IQ FROM Roster WHERE species = 'Human'"
-    print("\n"+sqlcmd)
+    print("\nTable output using fetchone() and while row is not None:")
+    sqlcmd = """
+        SELECT name, IQ 
+        FROM Roster 
+        WHERE species = 'Human'
+        """
+    print(sqlcmd)
     cur.execute(sqlcmd)
     row = cur.fetchone()
     while row is not None:
@@ -40,7 +45,8 @@ with conn:
         row = cur.fetchone()
 
     # print the rows all at once using tabulate
-    print("\n"+sqlcmd)
+    print("\n\nTable output using fetchall() and tabulate module")
+    print(sqlcmd)
     cur.execute(sqlcmd)
     data = cur.fetchall()
     print (tabulate(data, headers=["Name","IQ"]))
