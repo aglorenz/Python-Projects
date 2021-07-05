@@ -27,7 +27,7 @@ londonTimezone = pytz.timezone('Europe/London')
 londonTime = d.astimezone(londonTimezone)
 convLondonTime = londonTime.strftime(fmt)
 print("The time in London is " + convLondonTime)
-if (londonTime.hour > 16 or londonTime.hour < 9):
+if (londonTime.hour > 17 or londonTime.hour < 9):
     print("We are closed.")
 else:
     print("We are open!")

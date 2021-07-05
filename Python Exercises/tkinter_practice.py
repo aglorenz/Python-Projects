@@ -1,6 +1,5 @@
 from tkinter import *
 win = Tk()
-print(win)
 f = Frame(win)
 b1 =  Button(f, text="One")
 b2 =  Button(f, text="Two")
