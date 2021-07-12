@@ -15,7 +15,7 @@ def storeFileList(conn, tblName, fileList, ext):
             if ext in name:
                 # remember to use a comma to indicate the list is a tuple or use [name]
 #                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
-                cmd = "INSERT INTO {}(filename) VALUES(?)".format(tblName) + "(name)"
+                cmd = "INSERT INTO {}(filename) VALUES(?,)".format(tblName) + "(name)"
                 print(cmd)
                 cur.execute(cmd)
 #                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
