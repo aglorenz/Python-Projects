@@ -41,6 +41,7 @@ class ParentWindow(tk.Frame):
 
         # define our master frame configuration
         self.master = master
+        print(type(master))
         self.master.minsize(800,350)  # Height and Width
         self.master.maxsize(800,350)
 
@@ -52,7 +53,7 @@ class ParentWindow(tk.Frame):
         # This protocol method is a tkinter built-in method to catch if
         # the user clicks the upper corner, "X" on Windows OS
         self.master.protocol("WM_DELETE_WINDOW", lambda: student_func.ask_quit(self))
-        arg = self.master
+
 
         # load in the GUI widgets from a separate module
         # keeping code comparmentalized and clutter free
