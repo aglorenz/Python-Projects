@@ -1,6 +1,10 @@
 #import datetime
 # help from https://realpython.com/python-datetime/
 # help from https://www.w3schools.com/python/python_datetime.asp
+# help from https://pypi.org/project/pytz/
+# help from https://www.kite.com/python/answers/how-to-set-the-timezone-of-a-datetime-in-python#:~:text=localize()%20to%20set%20the,object%20from%20the%20timezone%20zone%20.
+# help from https://stackoverflow.com/questions/1398674/display-the-time-in-a-different-time-zone
+
 # importing only the functions we need
 from datetime import datetime, timedelta
 import pytz
