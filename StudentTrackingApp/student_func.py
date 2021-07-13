@@ -88,6 +88,9 @@ def onSelect(self,event):
 ##            self.txt_email.delete(0,END)
 ##            self.txt_email.insert(0,data[3])
 
+##    # the rest of this code is from the listbox Phonebook app.  Keeping here as template in case it's needed.
+##    # calling the event is the self.lstList1 widget
+
 def onAdd(self):
     '''When Add button pressed, add the field entries to the Treelist and to the database'''
     
