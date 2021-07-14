@@ -18,6 +18,7 @@ class ParentWindow(Frame):  # Frame is a class, not a parameter passed in from
 
     def __init__(self,master):  # master = root = tk.Tk
         """
+
             Define the default tkinter widgets and their initial
             configuration and place them using the grid geometry.
         """
@@ -36,16 +37,19 @@ class ParentWindow(Frame):  # Frame is a class, not a parameter passed in from
         self.txt_custom.grid(row=1, column=0, columnspan=3, ipady=3, padx=(30,20), sticky=('we'))
 
         # Buttons
+        # Default web page 
         self.btn_default = tk.Button(self.master, text="Show Default Page", font=("Verdana", 12),
                                      command=self.default_page)
         self.btn_default.grid(row=2, column=1, pady=(20,20))
 
+        # Custom web page
         self.btn_custom = tk.Button(self.master, text="Submit Custom Text", font=("Verdana", 12),
                                     command=self.custom_page)
         self.btn_custom.grid(row=2, column=2, padx=(20,20), pady=(20,20))
 
+    # Method to produce the default web page
     def default_page(self):
-        #Text of the webpage
+        #Full text of the standard webpage. Trying to keep the format of  pretty html code
         html_text='''<html>
     <body>
         <h1>
@@ -62,11 +66,16 @@ class ParentWindow(Frame):  # Frame is a class, not a parameter passed in from
         # display the web page
         webbrowser.open_new_tab("web_page.html")
 
+    # Method to produce the custom web page
     def custom_page(self):
-        html_text1='''<html>
+        #First half of text of the custom webpage. Trying to keep the format of  pretty html code
+        html_text1='''
+<html>
     <body>
         <h1>
             '''
+
+        #Second half of text of the custom webpage. Trying to keep the format of  pretty html code
         html_text2='''
         </h1>
     </body>
