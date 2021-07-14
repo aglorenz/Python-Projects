@@ -39,10 +39,10 @@ class ParentWindow(Frame):  # Frame is a class, not a parameter passed in from
         # Labels
 
         # Text boxes
-        self.txt_source = tk.Entry(self.master, font="Verdana 12",text='')
-        self.txt_source.grid(row=0, column=1, rowspan=1, padx=(30,27), pady=(40,0),sticky='nswe')
+        self.txt_source = tk.Entry(self.master, font="Verdana 12")
+        self.txt_source.grid(row=0,column=1,rowspan=1,padx=(30,27),pady=(40,0),sticky='nwwe')
         self.txt_dest = tk.Entry(self.master,text='')
-        self.txt_dest.grid(row=1, column=1, rowspan=1,padx=(30,27),pady=(10,0),sticky='nswe')
+        self.txt_dest.grid(row=1,column=1,rowspan=1,padx=(30,27),pady=(10,0),sticky='nswe')
 
 
         # Buttons
