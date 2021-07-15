@@ -55,3 +55,11 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 
 **What I learned**
 * Abstract methods are useful for when we want to provide a common interface for different implementations of a component such as payment method.  Good for API's
+
+## [Web Page Generator](https://github.com/aglorenz/Python-Projects/tree/main/Web Page Generator)
+**Generate a Web Page With Python**
+* Create an app that can generate a simple (hardcoded) web page at the click of a button
+* Include a second button and an text Entry box to allow the user to create a customized verson of the web Page.
+
+**What I learned**
+* Assigning a '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
