@@ -10,23 +10,69 @@
 #               Create an object that uses the protected and private attribute or function
 #
 # Tested OS:    This code was written and tested to work with Windows 10.
+#
 
-
-# 
 class Student:
-    """Class to demonstrate encapsulation"""
+    """
+    Sample Student Class to demonstrate encapsulation
+
+    ...  Additional explanation goes here ...
+
+    Attributes
+    ----------
+    _name : str
+        The name of the student (protected)
+    _phone : str
+        The phone number of the student (protected)
+    __highSchool : str
+        The name of the student's current high school (private, initialized as "Cordova")
+
+    Methods
+    -------
+    getHighSchool()
+        Gets the private attribute __highSchool
+
+    setHighSchool()
+        Sets the private attribute __highSchool
+    """
     
     def __init__(self, name, phone):
+        '''
+        Initialize the class attributes
+
+        Parameters
+        ----------
+        name : str
+            The name of the student
+        phone : str
+            The phone number of the student
+        '''
+        
         # protected vars are prefixed with _
         self._fname = name
         self._phone = phone
         self.__highSchool = "Cordova" # private class attribute prefixed with __
         
     # Private attributes must be accessed with get/set functions else you get an error
-    def getHighSchool(self):        # Gets the private attribute value
+    # Gets the private attribute value
+    def getHighSchool(self):
+        ''' Returns the value of the private attribute, __highschool'''
         return self.__highSchool
 
-    def setHighSchool(self, highSchool): # Set's the value of the private attribute
+    # Set's the value of the private attribute
+    def setHighSchool(self, highSchool): 
+        ''' Sets the value of the private attribute, __highschool
+
+        Parameters
+        ----------
+        highSchool : str
+            The name of the student's new high school
+
+        Raises
+        -------
+        none
+        '''
+        
         self.__highSchool = highSchool
 
 if __name__ == "__main__":
