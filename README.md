@@ -1,7 +1,7 @@
 # Python Projects 
 **Projects from the Tech Academy Python course**
 ```
-All projects written in Python 3.9.5 unless otherwise noted
+All projects written in Python 3.9.5 unless otherwise noted.
 ```
 
 ## [Nice or Mean Game (3.9.4)](https://github.com/aglorenz/Python-Projects/tree/main/Nice%20or%20Mean%20Game)
@@ -43,9 +43,9 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 ## [Encapsulation](https://github.com/aglorenz/Python-Projects/tree/main/Encapsulation)
 **Demonstrate Encapsulation**
 * Create a class that uses encapsulation.  The class should use:
-  * A private attribute or function
-  * A protected attribute or function
-* Create an object that uses the protected and private attribute or function
+  * A private attribute or function.
+  * A protected attribute or function.
+* Create an object that uses the protected and private attribute or function.
 
 ## [Abstraction](https://github.com/aglorenz/Python-Projects/tree/main/Abstraction)
 **Demonstrate Abstraction Concepts**
