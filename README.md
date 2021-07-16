@@ -51,15 +51,15 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 **Demonstrate Abstraction Concepts**
 * Create a class with at least one abstract method and one regular method.
 * Create a child class that implements the parent class's abstract method.
-* Create at least one object that that utilizes both the parent and child methods
+* Create at least one object that that utilizes both the parent and child methods.
 
 **What I learned**
 * Abstract methods are useful for when we want to provide a common interface for different implementations of a component such as payment method.  Good for API's
 
 ## [Web Page Generator](https://github.com/aglorenz/Python-Projects/tree/main/Web%20Page%20Generator)
 **Generate a Web Page With Python**
-* Create an app that can generate a simple (hardcoded) web page at the click of a button
-* Include a second button and an text Entry box to allow the user to create a customized verson of the web Page.
+* Create an app that can generate a simple (hardcoded) web page at the click of a button.
+* Include a second button and a text Entry box to allow the user to create a customized verson of the web Page.
 
 **What I learned**
 * Assigning a '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
