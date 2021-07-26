@@ -64,10 +64,25 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 **What I learned**
 * Assigning a '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
 
-## [File Transfer](https://github.com/aglorenz/Python-Projects/tree/main/Web%20Page%20Generator)
-**Generate a Web Page With Python**
-* Create an app that can generate a simple (hardcoded) web page at the click of a button.
-* Include a second button and a text Entry box to allow the user to create a customized verson of the web Page.
+## [File Transfer](https://github.com/aglorenz/Python-Projects/tree/main/File%20Transfer)
+**Copy files from  one folder to another**
+* Create an app using Tkinter with buttons to select a source and destination folder.  Display folder paths in Tkinter Entry widgets.
+* Files younger than 24 hours will be copied from source to destination when the 'Check for files' button is clicked.
 
 **What I learned**
-* Assigning a '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
+* Became more effective at using Docstrings for Modules, Methods/Functions, and Classes.
+* The basics of the shutil and os libraries.
+* How to use the importlib to reimport modules without having to restart IDLE.
+* How to pass a widget to a function -- to capture a folder path for Source and Destination and store in Entry widget.
+```
+  >>> import importlib as il
+  >>> import file_transfer_main
+  >>> help(file_transfer_main)
+  ... make changes to file_transfer_main
+  >>> il.reload(file_transfer_main)
+  >>> help(file_transfer_main)  # to see changes
+```
+**Enhancement:**
+* Added Hovertips to the Buttons to explain their function.
+* Validate Source and Destination folders are selected prior to File Transfer.
+* Show Messagebox if both folders are not selected or are the same.
