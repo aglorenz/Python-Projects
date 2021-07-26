@@ -16,7 +16,7 @@ Classes:
 '''
 
 
-# Using the wildcoard is bad practice  W/O it, you have to explicitly state which tool kit you are using
+# Using the wildcard is bad practice  W/O it, you have to explicitly state which tool kit you are using
 # which makes for easier reading.  W/O it, you have to prefix widgets with the toolkit like so:  tk.Frame vs Frame
 #from tkinter import *  
 import tkinter as tk
