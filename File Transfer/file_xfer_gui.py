@@ -53,19 +53,19 @@ def load_gui(self):
     # Source folder 
     self.btn_brws_src = tk.Button(self.master,width=12,height=1,text='Browse Src...',
                                   command=lambda: file_xfer_func.get_folder(self.txt_source))
-    btn_src_tip = Hovertip(self.btn_brws_src,'Click to select source folder', hover_delay=600) # Tooltip
+    btn_src_tip = Hovertip(self.btn_brws_src,'Click to select Source folder', hover_delay=600) # Tooltip
     self.btn_brws_src.grid(row=0,column=0,padx=(15,0),pady=(40,0),sticky='we')
 
     # Destination folder 
     self.btn_brws_dest = tk.Button(self.master,width=12,height=1,text='Browse Dest...',
                                    command=lambda: file_xfer_func.get_folder(self.txt_dest))
-    btn_dest_tip = Hovertip(self.btn_brws_dest,'Click to select destination folder', hover_delay=600) # Tooltip
+    btn_dest_tip = Hovertip(self.btn_brws_dest,'Click to select Destination folder', hover_delay=600) # Tooltip
     self.btn_brws_dest.grid(row=1,column=0,padx=(15,0),pady=(10,0),sticky='we')
 
     # Transfer file(s) 
-    self.btn_check = tk.Button(self.master,width=12,height=2,text='Check for files...',
+    self.btn_check = tk.Button(self.master,width=12,height=2,text='Check for Files...',
                                command=lambda: file_xfer_func.xfer_files(self.txt_source.get(), self.txt_dest.get()))
-    btn_check_tip = Hovertip(self.btn_check,'Click to move files < 24 hours\n'
+    btn_check_tip = Hovertip(self.btn_check,'Click to copy files < 24 hours\n'
                              'old from Source to Destination', hover_delay=600) # Tooltip
     self.btn_check.grid(row=2,column=0, padx=(15,0),pady=(10,0),sticky='we')
     
