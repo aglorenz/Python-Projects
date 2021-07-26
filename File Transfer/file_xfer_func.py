@@ -95,6 +95,11 @@ def xfer_files(source, destination):
         messagebox.showerror(title='Error', message='Please select the Source and Destination paths.')
         return
 
+    # if the source and destination are the same, show message box
+    if(source == destination):
+        messagebox.showerror(title='Error', message='Source and Destination paths must not be the same.')
+        return
+
     # get list of files from source
     files = os.listdir(source)
 
