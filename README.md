@@ -84,5 +84,5 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 ```
 **Enhancement:**
 * Added Hovertips to the Buttons to explain their function.
-* Validate Source and Destination folders are selected prior to File Transfer.
+* Check that Source/Destination folders are selected prior to File Transfer.
 * Show Messagebox if both folders are not selected or are the same.
