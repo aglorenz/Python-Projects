@@ -19,6 +19,9 @@ printFileList(conn, tblName)
 ## [Inheritance (3.9.4)](https://github.com/aglorenz/Python-Projects/tree/main/Inheritance)
 Demonstrate Classes, Inheritance, and a parameterized class constructor.
 
+**What I learned**
+* The distinction between Class Attributes and Instance Attributes.  An Instance will have access to a Class attribute as long as the name of the Instance attribute (initialized with the __init__ method) is not the same as Class attribute.
+
 ## [Polymorphism (3.9.4)](https://github.com/aglorenz/Python-Projects/tree/main/Polymorphism)
 * Create two classes (Automobile, Airplane) that inherit from a parent (Vehicle) class.
 * Ensure the parent class has at least one method.
