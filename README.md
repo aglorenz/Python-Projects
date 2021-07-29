@@ -16,7 +16,7 @@ createTable(conn, tblName)
 storeFileList(conn, tblName, fileList, ext)
 printFileList(conn, tblName)
 ```
-## [Inheritance (3.9.4)](https://github.com/aglorenz/Python-Projects/tree/main/Inheritance)
+## [Inheritance](https://github.com/aglorenz/Python-Projects/tree/main/Inheritance)
 Demonstrate Classes, Inheritance, and a parameterized class constructor.
 
 **What I learned**
