@@ -69,7 +69,7 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 
 ## [File Transfer](https://github.com/aglorenz/Python-Projects/tree/main/File%20Transfer)
 **Copy files from  one folder to another**
-* Create an app using Tkinter with buttons to select a source and destination folder.  Display folder paths in Tkinter Entry widgets.
+* Create an app using Tkinter with buttons for selecting a source and destination folder.  Display folder paths in Tkinter Entry widgets.
 * Files younger than 24 hours will be copied from source to destination when the 'Check for files' button is clicked.
 
 **What I learned**
