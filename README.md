@@ -65,7 +65,7 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * Include a second button and a text Entry box to allow the user to create a customized verson of the web Page.
 
 **What I learned**
-* Assigning a '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
+* Assigning a docstring '''comment''' to a variable can be an effective way to preseve the visual format of an HTML file.
 
 ## [File Transfer](https://github.com/aglorenz/Python-Projects/tree/main/File%20Transfer)
 **Copy files from  one folder to another**
