@@ -75,8 +75,8 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 **What I learned**
 * Became more effective at using Docstrings for Modules, Methods/Functions, and Classes.
 * The basics of the shutil and os libraries.
+* How to pass a widget to a function -- Function captures a browsed-for folder path and stores it in the Entry widget.
 * How to use the importlib to reimport modules without having to restart IDLE.
-* How to pass a widget to a function -- to capture a folder path for Source and Destination and store in Entry widget.
 ```
   >>> import importlib as il
   >>> import file_transfer_main
