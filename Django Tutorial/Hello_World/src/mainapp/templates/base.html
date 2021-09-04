@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" class="UTF-8">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    <div class="page_container">
+        <ul class="topnav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <header class="header-title">
+            <h1>{% block header %}{% endblock %}</h1>
+        </header>
+        {% block content %}{% endblock %}
+    </div>
+
+    <section id="block-footer">
+        <p id="footer-right"><a href="#">Terms</a>|<a href="#">Privacy</a></p>
+        <p id="footer-left">&copy:2021 - The Fictional, Royal Andy</p>
+    </section>
+    </body>
+</html>

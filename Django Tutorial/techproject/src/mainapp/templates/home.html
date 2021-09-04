@@ -1,0 +1,25 @@
+<!--<html>-->
+<!--<head><title>Welcome Home</title></head>-->
+<!--<body>-->
+{% extends "base.html" %}
+
+{% block title %}Royal Hotels{% endblock %}
+
+{% block header %}Welcome to the Royal Hotels!{% endblock %}
+
+{% block content %}
+<!--<h1>Welcome {{ user | title }} to the greatest site on earth!</h1>-->
+
+{% for product in products %}
+    <ul>
+        {% if product == "Apples" %}
+        <li>#{{ product }}</li>
+        {% else %}
+        <li>{{ product }}</li>
+        {% endif %}
+    </ul>
+{% endfor %}
+
+{% endblock %}
+<!--</body>-->
+<!--</html>-->
