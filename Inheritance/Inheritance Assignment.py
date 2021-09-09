@@ -54,12 +54,17 @@ if __name__ == "__main__":
     # print object attribute
     print("\nnew user.name={}".format(new_user.name)) # "John Doe"
     # print class attribute.  It's different than the object attribute with same name
-    print("User class attribute User.name={}".format(User.name)) # "None"
+    print("User class attribute User.name={}".format(User.name)) # "No Name Provided"
 
     # as long as the __init__ function doesn't overwrite the class attribute, the
     # Class attribute is available to the instantiated object as originally set
     print("\nnew_user.nick_name={}".format(new_user.nick_name)) # "Naomi"
-    # print class attribute from instantiated object 
+
+    # print attribute from class
     print("User class attribute User.nick_name={}".format(User.nick_name)) # "Naomi"
+
+    new_emp = Employee("George","George@george.com", "a1b2", 333)
+    new_emp.login()
+    print("Employee base pay = {}".format(new_emp.base_pay))
 
     
