@@ -13,12 +13,12 @@ def storeFileList(conn, tblName, fileList, ext):
         cur = conn.cursor()
         for name in fileList:
             if ext in name:
-                # remember to use a comma to indicate the list is a tuple or use [name]
-#                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
-                cmd = "INSERT INTO {}(filename) VALUES(?,)".format(tblName) + "(name)"
-                print(cmd)
-                cur.execute(cmd)
-#                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
+                # Hard as you may try, you cannot combine two parameters of the execute function into one
+                #cmd = "INSERT INTO txt_filenames (filename) VALUES(?)," +  '(name,)'
+                #cur.execute(cmd)  # no can do
+
+                # remember to use a comma to indicate a tuple as the 2nd parm or use [name] as a list
+                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
             conn.commit()
 
 def printFileList(conn, tblName):
