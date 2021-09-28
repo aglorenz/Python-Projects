@@ -110,6 +110,8 @@ def xfer_files(source, destination):
     for file_name in files:
         file_path = source + '/' + file_name
         mod_date_in_sec = os.path.getmtime(file_path) # timestamp format
+        print(mod_date_in_sec)
+        
         #mod_date = time.ctime(mod_date_in_sec) # string format not needed
         mod_date = datetime.fromtimestamp((mod_date_in_sec)) # returns a datetime from timestamp format
         
