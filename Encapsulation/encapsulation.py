@@ -36,7 +36,7 @@ class Student:
         Sets the private attribute __highSchool
     """
     
-    def __init__(self, name, phone):
+    def __init__(self, name, phone, highschool):
         '''
         Initialize the class attributes
 
@@ -51,7 +51,7 @@ class Student:
         # protected vars are prefixed with _
         self._fname = name
         self._phone = phone
-        self.__highSchool = "Cordova" # private class attribute prefixed with __
+        self.__highSchool = highschool # private class attribute prefixed with __
         
     # Private attributes must be accessed with get/set functions else you get an error
     # Gets the private attribute value
@@ -76,13 +76,13 @@ class Student:
         self.__highSchool = highSchool
 
 if __name__ == "__main__":
-    student1 = Student("Andy","555-555-5555")
+    student1 = Student("Andy","555-555-5555", "Lincoln")  # you can initialize a private attribute
     print("Student Name: {}\nPhone: {}\n"
           .format(student1._fname,student1._phone))
 
-    # print(student1.__highSchool) # this will fail.  Must use get/set functions to access
+    #print(student1.__highSchool) # this will fail.  Must use get/set functions to access the attribute
     
     print("{}'s high school is {}".format(student1._fname, student1.getHighSchool()))
     print("Updating {}'s high school".format(student1._fname))
-    student1.setHighSchool("Cactus")
+    student1.setHighSchool("Laurelwood")
     print("{}'s high school is now {}".format(student1._fname, student1.getHighSchool()))
