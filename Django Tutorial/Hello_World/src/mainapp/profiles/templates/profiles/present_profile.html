@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}My World{% endblock %}
+
+{% block header %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="admin_panel">
+    <form name="profileForm" method="POST" action="../details/">
+        <div class="fmrObject_container">
+            <table>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {{ form.as_table }}
+            </table>
+            <div class="frmBtn_container">
+                <input type="submit" value="Save Changes">
+            </div>
+            <div style="text-align: center">
+                <a href="../{{ form.pk }}delete/"><button class="btn">DELETE</button></a>
+                <a href="{% url 'admin_console' %}"><button class="btn">CANCEL</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

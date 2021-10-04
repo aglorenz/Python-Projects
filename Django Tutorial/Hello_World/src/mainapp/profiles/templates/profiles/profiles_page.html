@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}My World{% endblock %}
+
+{% block header %}Welcome Home!{% endblock %}
+
+{% block content %}
+
+<div class="admin_panel">
+    <form name="profileForm" method="POST" action="">
+        <div class="frmObject_container">
+            {% csrf_token %}
+            <label for="menu_id">Select  profile from the list to edit:</label>
+            <select id="menu_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
+                <option value="">Click to select profile</option>
+            {% for profile in profiles %}
+                <option value="../{{ profile.pk }}/details/">{{ profile.first_name }}</option>
+             {% endfor %}
+            </select>
+            <div>
+                <a href="{% url 'add_profile' %}"><button type="button" class="btn">Add New Profile</button></a>
+                <a href="{% url 'home' %}"><button type="button" class="btn">Logout of Profile</button></a>
+            </div>
+<!--            {% for name in names %}-->
+<!--                <ul>-->
+<!--                    {% if name == "Andy" %}-->
+<!--                    <li>Hello {{ name }}</li>-->
+<!--                    {% else %}-->
+<!--                    <li>{{ name }}</li>-->
+<!--                    {% endif %}-->
+<!--                </ul>-->
+<!--            {% endfor %}-->
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}
