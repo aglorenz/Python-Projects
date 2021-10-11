@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Royal Hotels{% endblock %}
+
+{% block header %}Create A New Product:{% endblock %}
+
+{% block content %}
+
+
+    <div class="admin_panel">
+        <form method="POST" action="{% url 'createRecord' %}">
+            <div class="frmObject_container">
+                <!-- Cross Site Request Forgery (csrf_token) protection -->
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {{ form.as_p }}
+            </div>
+            <div class="frmBtn_container">
+                <input type="submit" class="btn" value="Create New Product" name="Save_Item">
+                <a href="{% url 'admin_console' %}"><button type="button" class="btn" value="Cancel">Cancel</button></a>
+            </div>
+        </form>
+    </div>
+
+
+
+{% endblock %}

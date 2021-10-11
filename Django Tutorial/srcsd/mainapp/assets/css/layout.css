@@ -16,9 +16,7 @@ html, body {
 	padding: 0;
 }
 p {
-/*
 	padding: 2px 16px;
-*/
 	font-size: 15px;
 	font-family: 'Lato', Georgia, sans-serif;
 	color: #666666;
@@ -117,7 +115,7 @@ ul.topnav li.icon {
 }
 /* This controls the form size and contents */
 .admin_panel {
-    margin: 2% auto;
+    margin: 0 auto;
     width: 50%;
     height: 80%;
     background-color: #fffaf4;
@@ -152,7 +150,9 @@ ul.topnav li.icon {
     width: 80%;
     margin: 0 auto;
     padding: 0;
+    text-align: center;
 }
+
 .fieldWrapper{
 	display: block;
     width: 90%;
@@ -162,24 +162,15 @@ ul.topnav li.icon {
 }
 /* form button container */
 .frmBtn_container {
-/*
     display: flex;
-*/
-/*
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-*/
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 .btn {
-/*
 	flex-grow: 2;
     justify-content: center;
     text-align: center;
-*/
     display: inline-block;
     width: 150px; /* button size */
     margin: 2% 2% 2% 2%;
@@ -187,8 +178,6 @@ ul.topnav li.icon {
     padding: 10px 0px;
     text-decoration: none;
     font-size: 14px;
-    background-color: #efefef;
-    font-family: Arial;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -202,7 +191,6 @@ ul.topnav li.icon {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 	transition: opacity 0.3s ease-in-out;
 }
-/*
 input[type="submit"] {
     flex-grow: 1;
     width: 10%;
@@ -214,15 +202,12 @@ input[type="submit"] {
     padding: 9px 0px 9px 0px;
     text-decoration: none;
     font-size: 14px;
-    -webkit-transition-duration: 0.4s; */
-/* Safari *//*
-
+    -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
     border: 2px solid silver;
     border-radius: 5px;
 }
-*/
 input[type="submit"]:hover {
     background-color: #355664;
     color: white;
@@ -230,18 +215,16 @@ input[type="submit"]:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 	transition: opacity 0.3s ease-in-out;
 }
-.select-center {
-	margin: 2% auto 1%;
-	border: 2px solid silver;
-}
 select {
 	padding: 4px 10px;
-	margin: 1% 0;
-	display: block;
+	width: 40%;
+	display: inline-block;
+	margin: 1% 0% 0 1%;
+	border: 2px solid silver;
     border-radius: 5px;
     box-shadow: 0 0 10px #E8E8E8 inset;
 }
-input[type=text] {
+input, textarea {
     width: 100%;
     margin: 1% 0 0 0;
     padding: 1% 0 2% 1%;
@@ -250,18 +233,15 @@ input[type=text] {
     border-radius: 5px;
     border: 2px solid silver;
 }
-.label_center {
-    text-align: center;
-}
 label {
 	display: inline-block;
     width: 95%;
-    margin: 3% 0 0 0;
+    text-align: left;
+    margin: 1% 0 0 0;
     color: black;
     line-height: 18px;
     font-size: 20px;
 }
-
 #block-footer {
     clear: both;
     display: flex;
@@ -302,7 +282,7 @@ label {
 }
 .bg_img {
     background-color: lightblue;
-    background-image: url('/static/images/waikiki.jpg');
+    background-image: url('/static/images/hotel_img3.jpg');
     background-size: cover;
     background-attachment:fixed;
     background-position: center;

@@ -8,6 +8,7 @@ def home(request):
         'products': products
     }
     return render(request, "home.html", context)
+    # return render(request, "home.html") # this will work, too, if you don't have data to pass.
 
     # user = request.user
     # context = {

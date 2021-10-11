@@ -15,11 +15,13 @@
                 {{ form.as_table }}
             </table>
             <div class="frmBtn_container">
-                <input type="submit" value="Save Changes">
+                <input class="btn" type="submit" value="Save Changes">
             </div>
             <div style="text-align: center">
-                <a href="../{{ form.pk }}delete/"><button class="btn">DELETE</button></a>
-                <a href="{% url 'admin_console' %}"><button class="btn">CANCEL</button></a>
+<!--                <button type="button" class="btn"><a href="../{{ form.pk }}delete/">DELETE</a></button>-->
+                <a class="btn" href="../{{ form.pk }}delete/">DELETE</a>
+<!--                <a href="../{{ form.pk }}delete/"><button class="btn">DELETE</button></a>-->
+                <button class="btn"><a href="{% url 'admin_console' %}">CANCEL</a></button>
             </div>
         </div>
     </form>

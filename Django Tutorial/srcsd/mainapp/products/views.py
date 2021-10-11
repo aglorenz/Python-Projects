@@ -4,7 +4,7 @@ from .forms import ProductForm
 from .models import Product
 
 
-# Create your views here.
+
 def admin_console(request):
     products = Product.objects.all()
     return render(request, 'products/products_page.html', {'products': products})
@@ -27,13 +27,12 @@ def details(request, pk):
 
 def delete(request, pk):
     pk = int(pk)
-    print("I'm deleting it")
     item = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
         item.delete()
         return redirect('admin_console')
-    context = {"item": item, }
-    return render(request, 'products/confirmDelete.html', context)
+    context = {"item": item,}
+    return render(request, "products/confirmDelete.html", context)
 
 
 def confirmed(request):
@@ -43,8 +42,8 @@ def confirmed(request):
         if form.is_valid():
             form.delete()
             return redirect('admin_console')
-        else:
-            return redirect('admin_console')
+    else:
+        return redirect('admin_console')
 
 
 def createRecord(request):

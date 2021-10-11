@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Royal Hotels{% endblock %}
+
+{% block header %}Welcome to the Royal Hotels!{% endblock %}
+
+{% block content %}
+
+
+{% for product in products %}
+    <ul>
+        {% if product == "Apples" %}
+        <li>#{{ product }}</li>
+        {% else %}
+        <li>{{ product }}</li>
+        {% endif %}
+    </ul>
+{% endfor %}
+
+{% endblock %}
+

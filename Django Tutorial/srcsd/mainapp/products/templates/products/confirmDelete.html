@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Royal Hotels{% endblock %}
+
+{% block header %}Delete Confirmation:{% endblock %}
+
+{% block content %}
+
+
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <h2>Confirm Delete</h2>
+        <p>Are you sure you would like to delete "{{item.name}}" from the database?</p>
+
+        {{ item.as_p }}
+
+        <input type="submit" value="Yes, delete it!" class="btn">
+        <a href="{% url 'admin_console' %}"><button class="btn" type="button">Cancel</button></a>
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}My World{% endblock %}
+
+{% block header %}Delete Confirmation:{% endblock %}
+
+{% block content %}
+    <!-- The "." action sends it right back to the delete method in views.py-->
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <h2>Confirm </h2>
+        <!-- item.name wildcard comes from "context" dictionary item in delete method a-->
+        <p>Are you sure you would like to delete "{{item.name}} from the database?</p>
+
+        {{ item.as_p  }}
+
+        <button type="submit"  class="btn">Yes, delete it!</button>
+        <button class="btn"><a href="{% url 'admin_console' %}">Cancel</a></button>
+    </form>
+
+{% endblock %}
