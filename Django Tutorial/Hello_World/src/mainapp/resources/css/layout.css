@@ -3,7 +3,9 @@
 }
 
 html {
+/*
     background-color: lightblue;
+*/
 }
 
 body {
@@ -120,7 +122,7 @@ ul.topnav li.icon {
     margin: 2% auto;
     width: 50%;
     height: 80%;
-    background-color: #fffaf4;
+    background-color: #afb3e9b3;
 	border: 1px solid #d6d6d6;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 	transition: all 0.3s ease-in-out;
@@ -164,8 +166,6 @@ ul.topnav li.icon {
 .frmBtn_container {
 /*
     display: flex;
-*/
-/*
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
@@ -174,6 +174,9 @@ ul.topnav li.icon {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+input#btn_warn {
+background-color: #fd6900cc /* orange */
+}
 .btn {
 /*
 	flex-grow: 2;
@@ -181,7 +184,7 @@ ul.topnav li.icon {
     text-align: center;
 */
     display: inline-block;
-    width: 150px; /* button size */
+    width: 120px; /* button size */
     margin: 2% 2% 2% 2%;
     color: black;
     padding: 10px 0px;
@@ -241,6 +244,13 @@ select {
     border-radius: 5px;
     box-shadow: 0 0 10px #E8E8E8 inset;
 }
+table {
+width: 100%;
+margin: 2% 0;
+}
+th {
+text-align: left
+}
 input[type=text] {
     width: 100%;
     margin: 1% 0 0 0;
@@ -260,6 +270,7 @@ label {
     color: black;
     line-height: 18px;
     font-size: 20px;
+    text-align: left;
 }
 
 #block-footer {
@@ -301,7 +312,9 @@ label {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .bg_img {
+/*
     background-color: lightblue;
+*/
     background-image: url('/static/images/waikiki.jpg');
     background-size: cover;
     background-attachment:fixed;

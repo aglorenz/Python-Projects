@@ -8,7 +8,7 @@
 
 <div class="admin_panel">
     <form name="profileForm" method="POST" action="../details/">
-        <div class="fmrObject_container">
+        <div class="frmObject_container">
             <table>
                 {% csrf_token %}
                 {{ form.non_field_errors }}
@@ -17,11 +17,11 @@
             <div class="frmBtn_container">
                 <input class="btn" type="submit" value="Save Changes">
             </div>
-            <div style="text-align: center">
+            <div class="frmBtn_container">
 <!--                <button type="button" class="btn"><a href="../{{ form.pk }}delete/">DELETE</a></button>-->
-                <a class="btn" href="../{{ form.pk }}delete/">DELETE</a>
+                <a href="../{{ form.pk }}delete/" class="btn" >Delete</a>
 <!--                <a href="../{{ form.pk }}delete/"><button class="btn">DELETE</button></a>-->
-                <button class="btn"><a href="{% url 'admin_console' %}">CANCEL</a></button>
+                <a href="{% url 'admin_console' %}" class="btn">Cancel</a>
             </div>
         </div>
     </form>
