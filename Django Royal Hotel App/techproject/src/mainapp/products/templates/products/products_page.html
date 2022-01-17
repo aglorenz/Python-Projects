@@ -13,7 +13,7 @@
             <label for="menu_id">Select a product from the list to edit:</label>
             <select id="menu_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
             {% for product in products %}
-                <option value="..//details/">{{ product.name }}</option>
+                <option value="../{{ product.pk }}/details/">{{ product.name }}</option>
             {% endfor %}
             </select>
             <div class="frmBtn_container">

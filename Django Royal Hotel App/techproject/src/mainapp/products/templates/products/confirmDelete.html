@@ -6,7 +6,8 @@
 
 {% block content %}
     <!-- . action sends it right back to the delete method in views.py-->
-    <form method="POST" action=".">
+<!--        <form method="POST" action=".">-->
+    <form method="POST" action="{% url 'confirmed' %}">
         {% csrf_token %}
         <h2>Confirm </h2>
         <!-- item.name wildcard comes from "context" dictionary item in delete method a-->

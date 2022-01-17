@@ -28,7 +28,8 @@ p {
 h1 {
     color: #0404B4;
     font-family: 'Lobster';
-    text-shadow: 3px 2px 1px rgba(181, 184, 255, 1);
+    font-size: 3.5em;
+    text-shadow: 4px 3px 1px rgba(181, 184, 255, 1);
     margin:0 auto;
 }
 h2 {

@@ -7,6 +7,8 @@ class Account(models.Model):
     last_name = models.CharField(max_length=50)
     initial_deposit = models.DecimalField(max_digits=15, decimal_places=2)
 
+    # A model's manager is an object through which Django models perform database queries. Each Django model has at
+    # least one manager, and you can create custom managers in order to customise database access
     Accounts = models.Manager()
 
     # Allows references to a specific account be returned
@@ -17,6 +19,10 @@ class Account(models.Model):
 
 TransactionTypes = [('Deposit', 'Deposit'), ('Withdrawal', 'Withdrawal')]
 
+# When using modelforms, Django uses foreign key to gather all possible account table id's and translate
+# them to "first_name last_name" using the overridden  __str__ dunder method and then display them as a drop down list
+# in the web form
+
 
 class Transaction(models.Model):
     date = models.DateField()
@@ -25,4 +31,6 @@ class Transaction(models.Model):
     description = models.CharField(max_length=100)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
+    # A model's manager is an object through which Django models perform database queries. Each Django model has at
+    # least one manager, and you can create custom managers in order to customise database access
     Transactions = models.Manager()

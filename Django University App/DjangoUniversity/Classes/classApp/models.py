@@ -21,8 +21,8 @@ class djangoClasses(models.Model):
 # The rows will be added twice each time you start the server as well.
 class1 = djangoClasses(title="Cooking", course_number=101, instructor_name="Dr Fredrickson", duration=1.5)
 class1.save()
-class2 = djangoClasses(title="Swimming", course_number=102, instructor_name="Mr Shipley", duration=4.0)
+class2 = djangoClasses(title="Swimming", course_number=102, instructor_name="Mrs Shipley", duration=4.0)
 class2.save()
-class3 = djangoClasses(title="Eating", course_number=103, instructor_name="Mrs Broth", duration=2.5)
+class3 = djangoClasses(title="Eating", course_number=103, instructor_name="Mr Broth", duration=2.5)
 class3.save()
 

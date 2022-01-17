@@ -104,7 +104,9 @@ def xfer_files(source, destination):
     files = os.listdir(source)
 
     # in datetime format
-    one_day_ago = (datetime.now()-timedelta(hours=24))#.timestamp() if I add this, it's in Epoch seconds 
+    one_day_ago = (datetime.now()-timedelta(hours=24))#.timestamp() if I add this, it's in Epoch seconds
+    print(one_day_ago)
+    pass
 
     # Copy files to their destination if they are less than 24 hours old.
     for file_name in files:

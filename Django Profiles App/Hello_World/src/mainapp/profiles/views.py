@@ -32,20 +32,25 @@ def delete(request, pk):
     item = get_object_or_404(Profile, pk=pk)
     if request.method == 'POST':
         item.delete()
+        print("deleting profile delete method")
         return redirect('admin_console')
     context = {"item": item, }
     return render(request, 'profiles/confirm_delete.html', context)
 
 
-def confirmed(request):
-    if request.method == 'POST':
-        # creates form instance and binds data to it
-        form = ProfileForm(request.POST or None)
-        if form.is_valid():
-            form.delete()
-            return redirect('admin_console')
-        else:
-            return redirect('admin_console')
+# def confirmed(request):
+#     print("Entering confirmed method")
+#     if request.method == 'POST':
+#         print("Confirm method POST")
+#         # creates form instance and binds data to it
+#         form = ProfileForm(request.POST or None)
+#         if form.is_valid():
+#             print("deleting profile confirmed method")
+#             form.delete()
+#             return redirect('admin_console')
+#         else:
+#             print("not deleting profile confirmed method")
+#             return redirect('admin_console')
 
 
 def add_profile(request):

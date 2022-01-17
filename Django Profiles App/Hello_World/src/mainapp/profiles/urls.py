@@ -7,6 +7,6 @@ urlpatterns = [
     path('admin_console', views.admin_console, name="admin_console"),
     path('<int:pk>/details/', views.details, name="details"),
     path('<int:pk>/delete/', views.delete, name="delete"),
-    path('confirm_delete/', views.confirmed, name="confirmed"),
+    #path('confirm_delete/', views.confirmed, name="confirmed"),
     path('add_profile/', views.add_profile, name="add_profile"),
 ]

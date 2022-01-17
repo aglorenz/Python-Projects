@@ -39,15 +39,17 @@ with conn:
         """
     print(sqlcmd)
     cur.execute(sqlcmd)
-    row = cur.fetchone()
-    while row is not None:
-        print("Name: {}, IQ: {}".format(row[0], row[1]))
-        row = cur.fetchone()
-
-    # print the rows all at once using tabulate
-    print("\n\nTable output using fetchall() and tabulate module")
-    print(sqlcmd)
-    cur.execute(sqlcmd)
-    data = cur.fetchall()
-    print (tabulate(data, headers=["Name","IQ"]))
- 
+    for row in cur.fetchall():
+        print(row)
+    
+##    row = cur.fetchone()
+##    while row is not None:
+##        print("Name: {}, IQ: {}".format(row[0], row[1]))
+##        row = cur.fetchone()
+##
+##    # print the rows all at once using tabulate
+##    print("\n\nTable output using fetchall() and tabulate module")
+##    print(sqlcmd)
+##    cur.execute(sqlcmd)
+##    data = cur.fetchall()
+##    print (tabulate(data, headers=["Name","IQ"])) 

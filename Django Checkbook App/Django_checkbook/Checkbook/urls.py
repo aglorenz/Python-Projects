@@ -1,10 +1,10 @@
 from django.urls import path
-from . import views
+from Checkbook.views import create_account, balance, transaction, index
 
 
 urlpatterns = [
-    path('', views.home, name='index'),
-    path('create/', views.create_account, name='create'),
-    path('<int:pk>/balance/', views.balance, name='balance'),
-    path('transaction/', views.transaction, name='transaction')
+    path('', index, name='index'),
+    path('create/', create_account, name='create'),
+    path('<int:pk>/balance/', balance, name='balance'),
+    path('transaction/', transaction, name='transaction')
 ]

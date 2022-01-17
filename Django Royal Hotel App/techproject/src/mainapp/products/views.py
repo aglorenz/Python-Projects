@@ -26,28 +26,35 @@ def details(request, pk):
 
 
 def delete(request, pk):
+    print("in delete method")
     pk = int(pk)
-    print("I'm deleting it")
     item = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
+        print("I'm deleting it")
         item.delete()
         return redirect('admin_console')
+    print("I'm not deleting it")
     context = {"item": item, }
     return render(request, 'products/confirmDelete.html', context)
 
 
 def confirmed(request):
+    print("entering confirmed method")
     if request.method == 'POST':
+        print("request.method is POST")
         # creates form instance and binds data to it
         form = ProductForm(request.POST or None)
         if form.is_valid():
+            print("form is valid")
             form.delete()
             return redirect('admin_console')
         else:
+            print("form is not valid")
             return redirect('admin_console')
 
 
 def createRecord(request):
+    print("entering createRecord")
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
