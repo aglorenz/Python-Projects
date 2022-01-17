@@ -72,7 +72,8 @@ This application uses Tkinter and SQLite3 to gather Student data from 5 input fi
 * Create an app using Tkinter with buttons for selecting a source and destination folder.  Display folder paths in Tkinter Entry widgets.
 * Files younger than 24 hours are copied from source to destination when the 'Check for files' button is clicked.
 
-![FileTransfer](https://user-images.githubusercontent.com/27447653/149687656-8d5dbda2-6af5-4ae5-b114-3018aa182cfb.png)
+![FileTransfer](https://user-images.githubusercontent.com/27447653/149689326-6044396d-da49-4d6e-866d-3818c7af9a0d.png)
+
 
 **What I learned**
 * Became more effective at using Docstrings for Modules, Methods/Functions, and Classes.
