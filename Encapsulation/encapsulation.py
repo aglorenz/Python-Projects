@@ -80,7 +80,7 @@ if __name__ == "__main__":
     print("Student Name: {}\nPhone: {}\n"
           .format(student1._fname,student1._phone))
 
-    print(student1.__highSchool) # this will fail.  Must use get/set functions to access the attribute
+    #print(student1.__highSchool) # this will fail.  Must use get/set functions to access the attribute
     
     print("{}'s high school is {}".format(student1._fname, student1.getHighSchool()))
     print("Updating {}'s high school".format(student1._fname))
