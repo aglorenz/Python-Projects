@@ -110,11 +110,23 @@ def xfer_files(source, destination):
     # Copy files to their destination if they are less than 24 hours old.
     for file_name in files:
         file_path = os.path.join(source, file_name)
-        mod_date_in_sec = os.path.getmtime(file_path) # timestamp format
+        
+        # Here are two ways to get a file's modification time
+        # 1 Get all file stats, then pick out the mtime
+        fileStatsObj = os.stat(file_path)  # gets all stats for the file.  All date/times in timestamp format
+        print('file stats = {}'.format(fileStatsObj))
+        file_stats_mod_date_in_sec = fileStatsObj.st_mtime
+        mod_date_1 = datetime.fromtimestamp((file_stats_mod_date_in_sec)) # convert to datetime format
+        print('mod_date_1 = {}'.format(mod_date_1))
+        #print(type(fileStatsObj)) # <class 'os.stat_result'>
+        # print(fileStatsObj.st_mtime) # mod time in seconds
+        
+        # Or 2 get just the modtime in timestamp format
+        mod_date_in_sec = os.path.getmtime(file_path) # gets just modtime in timestamp format
         print(mod_date_in_sec)
         
-        #mod_date = time.ctime(mod_date_in_sec) # string format not needed
-        mod_date = datetime.fromtimestamp((mod_date_in_sec)) # returns a datetime from timestamp format
+        #mod_date = time.ctime(mod_date_in_sec) # string format returned by ctime can't be used to compare dates.
+        mod_date = datetime.fromtimestamp((mod_date_in_sec)) # returns a datetime format from timestamp format
         
         print('File: {} \nMDate: {} \nMDate in Sec: {}\n'
               .format(file_path, mod_date, mod_date_in_sec))
