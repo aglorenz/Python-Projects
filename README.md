@@ -32,6 +32,8 @@ Demonstrate Classes, Inheritance, and a parameterized class constructor.
 ## [Student Tracking with Tkinter, Treeview, and SQLite3](https://github.com/aglorenz/Python-Projects/tree/main/StudentTrackingApp)
 This application uses Tkinter and SQLite3 to gather Student data from 5 input fields, add the data to a database table, and display it on a Treeview widget. The application has the following buttons Add, Delete, and Close.  The delete function deletes all records selected from the Treeview and database.
 
+![Screenshot 2022-01-20 162417](https://user-images.githubusercontent.com/27447653/150443325-4617b305-0319-4a6e-acfb-b002ec5c1eda.png)
+
 **Notes**
 * The primary key of the database is in Treeview column 0 and is hidden since it's not important to the user.
 * Though this column is hidden, it's values are available for identifying db rows for deletion.
