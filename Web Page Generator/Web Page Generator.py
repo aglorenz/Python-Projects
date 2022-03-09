@@ -28,7 +28,7 @@ class ParentWindow(Frame):  # Frame is a class, not a parameter passed in from
         self.master.title("Web Page Generator")
 
         # Labels
-        label_text = "Enter text to customize the text for your webpage."
+        label_text = "Enter text to customize your webpage."
         self.lbl_entry = tk.Label(text = label_text, font=("Verdana", 12))
         self.lbl_entry.grid(row=0, column=0, padx=(27,20), pady=(30,3))
 

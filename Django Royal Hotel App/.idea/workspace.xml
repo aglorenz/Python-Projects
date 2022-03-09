@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="25e0d8e1-a7d5-4eaf-afb1-d952c47cb88e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Database SQLite3/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Database SQLite3/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database SQLite3/myDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Database SQLite3/myDatabase.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/.idea/Django_checkbook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/.idea/Django_checkbook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/migrations/0002_remove_account_featured.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/templates/checkbook_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/templates/checkbook_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Checkbook App/Django_checkbook/Checkbook/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Django Profiles App/Hello_World/src/mainapp/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Django Profiles App/Hello_World/src/mainapp/profiles/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techproject/src/mainapp/products/templates/products/products_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/techproject/src/mainapp/products/templates/products/products_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudentTrackingApp/school.db" beforeDir="false" afterPath="$PROJECT_DIR$/../StudentTrackingApp/school.db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="251jhXSQ62SDAJQKCyRjYLn273m" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/techproject/src" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="25e0d8e1-a7d5-4eaf-afb1-d952c47cb88e" name="Default Changelist" comment="" />
+      <created>1644701606372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644701606372</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2660" y="-199" key="FileChooserDialogImpl" timestamp="1644701657327">
+      <screen x="1920" y="-479" width="1920" height="1050" />
+    </state>
+    <state x="2660" y="-199" key="FileChooserDialogImpl/0.0.1536.834/1920.-479.1920.1050@1920.-479.1920.1050" timestamp="1644701657327" />
+  </component>
+</project>

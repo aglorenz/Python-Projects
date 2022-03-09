@@ -25,32 +25,32 @@ def details(request, pk):
         return render(request, 'products/present_product.html', {'form': form})
 
 
+# The Delete/confirm delete action can be combined into a single  method  with different actions taken depending
+# if it's a POST or not.  However, I separated it into two methods as a challenge
 def delete(request, pk):
-    print("in delete method")
     pk = int(pk)
     item = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
-        print("I'm deleting it")
-        item.delete()
-        return redirect('admin_console')
-    print("I'm not deleting it")
+    # if request.method == 'POST':
+    #     item.delete()
+    #     return redirect('admin_console')
     context = {"item": item, }
     return render(request, 'products/confirmDelete.html', context)
 
 
-def confirmed(request):
-    print("entering confirmed method")
+def confirmed(request, pk):
+    pk = int(pk)
+    item = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
-        print("request.method is POST")
         # creates form instance and binds data to it
-        form = ProductForm(request.POST or None)
-        if form.is_valid():
-            print("form is valid")
-            form.delete()
-            return redirect('admin_console')
-        else:
-            print("form is not valid")
-            return redirect('admin_console')
+        item.delete()
+        # return redirect('admin_console')
+        # form = ProductForm(request.POST or None)
+        # if form.is_valid():
+        #     print("form is valid")
+        #     form.delete()
+        #     return redirect('admin_console')
+    # else:
+    return redirect('admin_console')
 
 
 def createRecord(request):

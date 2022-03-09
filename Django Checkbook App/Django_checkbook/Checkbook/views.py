@@ -5,22 +5,12 @@ from .forms import AccountForm, TransactionForm
 
 # Create your views here.
 def index(request):
-    # print("entering Home view")
+    # form = AccountForm(data=request.POST or None)  # trying to create drop down list from the account table; no work
     form = TransactionForm(data=request.POST or None)
-    # print("printing form 1")
-    # print(type(form))
-    # print(form)
     if request.method == 'POST':
-        # print("entering POST")
         pk = request.POST['account']
         return balance(request, pk)
     content = {'form': form}
-    # print("Entering Get")
-    # print(type(content))
-    # print(content)
-    # print("Content = {}".format(content))
-    # print("printing form2")
-    # print(form)
     return render(request, 'checkbook/index.html', content)
 
 

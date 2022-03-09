@@ -1,5 +1,5 @@
 from django.urls import path
-from Checkbook.views import create_account, balance, transaction, index
+from Checkbook.views import create_account, balance,  index, transaction
 
 
 urlpatterns = [

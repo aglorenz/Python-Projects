@@ -28,7 +28,6 @@ def details(request, pk):
 
 def delete(request, pk):
     pk = int(pk)
-    print("hi there")
     item = get_object_or_404(Profile, pk=pk)
     if request.method == 'POST':
         item.delete()

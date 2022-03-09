@@ -38,8 +38,8 @@ def main():
     ext = 'txt'
 
     # From a list of files, grab the file names with the .txt extension and store them in a database
-    fileList = ('information.docx','Hello.txt','myImage.png', \
-                'myMovie.mpg','World.txt','data.pdf','myPhoto.jpg')
+    fileList = ['information.docx','Hello.txt','myImage.png', \
+                'myMovie.mpg','World.txt','data.pdf','myPhoto.jpg']
 
     conn = sqlite3.connect(dbName)    # Create the db if it doesn't exist
     createTable(conn, tblName)        # Create table if it doesn't exist
