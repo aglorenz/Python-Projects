@@ -26,9 +26,13 @@ print(portland.zone)
 print(new_york.zone)
 print(london.zone)
 
+
 pdx_dt = portland.localize(datetime.now()) # looks like 19:38:55 PDT-0700
-pdxx_dt = datetime.now() # looks like 19:38:55
-print (pdxx_dt.strftime(time_fmt))
+pdxx_dt = datetime.now()
+print(type(pdxx_dt)) # <class 'datetime.datetime'>
+print(type(pdx_dt)) # <class 'datetime.datetime'>
+print (pdxx_dt) # looks like 2022-03-14 19:38:55.027081
+print (pdxx_dt.strftime(time_fmt)) # looks like 19:38:55
 print ("\nThe current time in Portland is {}".format(pdx_dt.strftime(time_fmt)))
 if pdx_dt.hour > 8 and pdx_dt.hour < 17 :
     print("Portland is open")
