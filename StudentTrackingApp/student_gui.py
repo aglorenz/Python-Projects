@@ -49,7 +49,7 @@ def load_gui(self):
     self.txt_course.grid(row=9,column=0,rowspan=1,padx=(30,0),pady=(0,0),sticky='new')
 
     ######################################################
-    # Define the Treeview with 2 scrollbars and grid them
+    # Define the Treeview with scrollbar and grid it
     ######################################################
 
     # self.treeList = ttk.Treeview(self.master)
