@@ -14,7 +14,7 @@
             <select class="select-center" id="profile_id" name="profile" onChange="top.location.href=this.options[this.selectedIndex].value;">
                 <option value="">Profiles...</option>
             {% for profile in profiles %}
-                <option value="../{{ profile.pk }}/details/">{{ profile.first_name }}</option>
+                <option value="../{{ profile.pk }}/details/">{{ profile.first_name }} {{ profile.last_name }}</option>
              {% endfor %}
             </select>
 <!--            <div class="frmBtn_container">-->
