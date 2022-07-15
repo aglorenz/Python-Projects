@@ -10,7 +10,8 @@
     <form name="profileForm" method="POST" action="">
         <div class="frmObject_container label_center">
             {% csrf_token %}
-            <label class="label_center" for="profile_id">Select profile to edit</label>
+<!--            <label class="label_center" for="profile_id">Select profile to edit</label>-->
+            <h3>Select profile to edit </h3>
             <select class="select-center" id="profile_id" name="profile" onChange="top.location.href=this.options[this.selectedIndex].value;">
                 <option value="">Profiles...</option>
             {% for profile in profiles %}
@@ -19,7 +20,7 @@
             </select>
 <!--            <div class="frmBtn_container">-->
                 <a href="{% url 'add_profile' %}" class="btn">Add New Profile</a>
-                <a href="{% url 'home' %}" class="btn">Logout</a>
+                <a href="{% url 'index' %}" class="btn">Logout</a>
 <!--            </div>-->
 <!--            {% for name in names %}-->
 <!--                <ul>-->

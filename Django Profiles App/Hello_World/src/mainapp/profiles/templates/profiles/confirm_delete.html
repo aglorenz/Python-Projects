@@ -10,13 +10,13 @@
     <form method="POST" action=".">
         <div class="frmObject_container">
             {% csrf_token %}
-            <h2>Confirm </h2>
+            <h2>Confirm! </h2>
             <!-- item.name wildcard comes from "context" dictionary item in delete method a-->
-            <p>Are you sure you would like to delete "{{item.name}} from the database?</p>
+            <h3>Are you sure you would like to delete <span>{{ item }}</span> from the database?</h3>
 
             {{ item.as_p  }}
             <div class="frmBtn_container">
-                <input id="btn_warn" type="submit"  class="btn" value="Yes, delete it!">
+                <input id="btn_warn" type="submit"  class="btn" value="Yes, delete!">
                 <a href="{% url 'admin_console' %}" class="btn">Cancel</a>
             </div>
         </div>

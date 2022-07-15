@@ -7,6 +7,24 @@ html {
     background-color: lightblue;
 */
 }
+/*
+use the following in a future project to consolidate us of colors
+*/
+/*:root {
+    --alfa-green: #ecece5;
+    --alfa-dk-green: #d1d6c7;
+    --alfa-charcoal-red: #7b0d30c2;
+    --alfa-red: #d21d67;
+    --alfa-dk-red: #a14a66;
+}
+
+div.cci-jumbotron {
+    border-width: 3px;
+    border-style: solid;
+    border-color: var(--alfa-dk-red);
+    position: relative;
+    background-color: transparent;
+}*/
 
 body {
 	position: relative;
@@ -41,6 +59,11 @@ h2 {
 h2 span {
     font-variant: small-caps;
     padding: 2px 16px;
+}
+
+h3 {
+    color: #0404B4;
+    font-family: 'Roboto', sans-serif;
 }
 .container {
     padding: 2px 16px;
@@ -153,9 +176,10 @@ ul.topnav li.icon {
 .frmObject_container {
 	display: block;
     width: 80%;
-    margin: 0 auto;
+    margin: 1em auto;
     padding: 0;
 }
+
 .fieldWrapper{
 	display: block;
     width: 90%;

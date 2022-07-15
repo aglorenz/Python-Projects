@@ -12,9 +12,8 @@
     <body>
     <div class="page_container">
         <ul class="topnav">
-            <li><a href="#">Home</a></li>
-
-            <li><a href="#">About</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'admin_console' %}">Admin Console</a></li>
         </ul>
         <header class="header-title">
