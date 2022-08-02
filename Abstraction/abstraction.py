@@ -5,7 +5,7 @@ class Food(ABC): # ABC = ABstract Class, imported from abc
         print("\nThe dish you've chosen to prepare is: ", meal)
 
     # This is an abstract method.  It is telling us to pass in an argument, but we won't tell
-    # you what kind of data it will be.
+    # not what kind of data it will be.
     @abstractmethod  # imported from abc
     def preparation(self, meal):
         pass
