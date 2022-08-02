@@ -12,7 +12,7 @@
             {% csrf_token %}
             <h2>Confirm! </h2>
             <!-- item.name wildcard comes from "context" dictionary item in delete method a-->
-            <h3>Are you sure you would like to delete <span>{{ item }}</span> from the database?</h3>
+            <center><h3>Are you sure you would like to delete {{ item }} from the database?</h3></center>
 
             {{ item.as_p  }}
             <div class="frmBtn_container">
