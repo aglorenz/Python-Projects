@@ -24,7 +24,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import filedialog
 
-import file_xfer_main
+#import file_xfer_main
 
 def center_window(self, w, h):
     '''Center the application window on the user's screen
