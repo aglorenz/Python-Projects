@@ -13,6 +13,7 @@
 
 
 from playsound import playsound
+# requires pip install playsound==1.2.2  Later versions will cause sound to fail.
 
 # initialize the game vars at game start
 def start(nice=0, mean=0, name=""):
