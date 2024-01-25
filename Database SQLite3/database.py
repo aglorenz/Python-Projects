@@ -16,9 +16,15 @@ def storeFileList(conn, tblName, fileList, ext):
                 # Hard as you may try, you cannot combine two parameters of the execute function into one
                 #cmd = "INSERT INTO txt_filenames (filename) VALUES(?)," +  '(name,)'
                 #cur.execute(cmd)  # no can do
-
+                #sql = '"INSERT INTO"'
+                sql = '"INSERT INTO {}(filename) VALUES(?)".format(tblName)' + ",(name,)"
+                #sql = '"INSERT INTO {}(filename) VALUES(?)"'.format(tblName)
+##                cur.execute(sql, (name,))  ## works
+                print(sql)
                 # remember to use a comma to indicate a tuple as the 2nd parm or use [name] as a list
-                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))
+                #cur.execute(sql) ## doesn't work; it treats sql as first parameter.  It looks for a 2nd
+                cur.execute("INSERT INTO {}(filename) VALUES(?)".format(tblName), (name,))  ## works; 2 parms
+                #cur.execute("INSERT INTO txt_filenames(filename) VALUES(?)", (name,))
             conn.commit()
 
 def printFileList(conn, tblName):
