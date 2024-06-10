@@ -7,7 +7,8 @@
 {% block content %}
 
 <div class="admin_panel">
-    <form method="POST" action="{% url 'add_profile' %}">
+<!--    <form method="POST" action="{% url 'add_profile' %}"> action field not necessary in this case. Data gets saved anyway-->
+    <form method="POST">
         <div class="frmObject_container">
             <!--  Cross Site Request Forgery  (csrf_toke) protection-->
             {% csrf_token %}
